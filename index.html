@@ -1,0 +1,5289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Last Minute | Study Space</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --purple: #7954d8;
+    --pink: #f27bbd;
+    --peach: #ffbd9b;
+    --mint: #9ce5d2;
+    --yellow: #ffe18a;
+    --dark: #30264b;
+    --light: #faf7ff;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--light);
+    color: var(--dark);
+}
+
+header {
+    background: linear-gradient(120deg, #7954d8, #b36bdc, #f27bbd);
+    color: white;
+    padding: 35px 7%;
+    border-radius: 0 0 35px 35px;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: auto;
+}
+
+header h1 {
+    font-size: 38px;
+    font-weight: 800;
+}
+
+header p {
+    margin-top: 8px;
+    opacity: .95;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 35px auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.subjects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+}
+
+.subject-card {
+    background: white;
+    border-radius: 22px;
+    padding: 25px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    box-shadow: 0 6px 25px rgba(70, 40, 110, .07);
+    transition: .25s;
+}
+
+.subject-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--pink);
+}
+
+.subject-icon {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.subject-card h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.subject-card p {
+    color: #827991;
+    font-size: 13px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.back-btn {
+    border: none;
+    background: #eee7ff;
+    color: var(--purple);
+    padding: 11px 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    margin-bottom: 22px;
+}
+
+.subject-heading {
+    background: linear-gradient(120deg, #eee5ff, #ffe7f3);
+    padding: 25px;
+    border-radius: 22px;
+    margin-bottom: 25px;
+}
+
+.subject-heading h2 {
+    margin-bottom: 5px;
+}
+
+.lecture-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+}
+
+.lecture-card {
+    background: white;
+    padding: 20px;
+    border-radius: 18px;
+    box-shadow: 0 5px 20px rgba(70, 40, 110, .06);
+}
+
+.lecture-card h3 {
+    margin-bottom: 7px;
+}
+
+.lecture-card p {
+    font-size: 13px;
+    color: #827991;
+    margin-bottom: 15px;
+}
+
+.action-btn {
+    background: var(--purple);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    transition: .2s;
+}
+
+.action-btn:hover {
+    background: #5d3db4;
+    transform: translateY(-2px);
+}
+
+.pdf-btn {
+    display: inline-block;
+    text-decoration: none;
+    background: #ffe5f1;
+    color: #c34c91;
+    padding: 9px 13px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.lecture-details {
+    margin-top: 30px;
+    background: white;
+    border-radius: 25px;
+    padding: 25px;
+    box-shadow: 0 6px 25px rgba(70, 40, 110, .07);
+}
+
+.lecture-header {
+    margin-bottom: 20px;
+}
+
+.lecture-header h2 {
+    font-size: 25px;
+}
+
+.lecture-header p {
+    color: #827991;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.tab-btn {
+    border: none;
+    background: #f1edfa;
+    color: #6c6083;
+    padding: 11px 15px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.tab-btn.active {
+    background: var(--purple);
+    color: white;
+}
+
+#panel {
+    min-height: 180px;
+}
+
+.content-section h2,
+.content-section h3 {
+    color: var(--purple);
+    margin: 20px 0 10px;
+}
+
+.content-section p {
+    line-height: 1.8;
+    margin-bottom: 12px;
+}
+
+.content-section ul,
+.content-section ol {
+    padding-left: 25px;
+    line-height: 2;
+    margin-bottom: 15px;
+}
+
+.content-section li {
+    margin-bottom: 4px;
+}
+
+.code-box {
+    background: #252536;
+    border-radius: 15px;
+    overflow: hidden;
+    margin: 15px 0 25px;
+    position: relative;
+}
+
+.code-box pre {
+    margin: 0 !important;
+    padding: 25px !important;
+    overflow-x: auto;
+}
+
+.code-box code {
+    font-family: Consolas, monospace;
+    font-size: 14px;
+}
+
+.copy-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #9c77ec;
+    color: white;
+    border: none;
+    padding: 7px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.quiz-question {
+    background: #faf7ff;
+    border: 1px solid #eee6ff;
+    padding: 20px;
+    border-radius: 17px;
+    margin-bottom: 20px;
+}
+
+.quiz-question h3 {
+    margin-bottom: 15px;
+}
+
+.option {
+    display: block;
+    background: white;
+    padding: 12px;
+    margin: 9px 0;
+    border: 1px solid #e8e0f3;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.option:hover {
+    border-color: var(--purple);
+}
+
+.option input {
+    margin-right: 8px;
+}
+
+.quiz-result {
+    background: #e8fff7;
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+
+.flashcard {
+    background: linear-gradient(130deg, #eee5ff, #ffe6f2);
+    min-height: 200px;
+    border-radius: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+    cursor: pointer;
+    margin-bottom: 18px;
+}
+
+.flashcard h3 {
+    font-size: 20px;
+}
+
+.flashcard-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.flashcard-controls button {
+    border: none;
+    padding: 10px 18px;
+    border-radius: 10px;
+    background: var(--purple);
+    color: white;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.doctor-quiz-card {
+    padding: 20px;
+    border-radius: 15px;
+    background: #fff5fa;
+    margin-bottom: 15px;
+    border: 1px solid #f8d9e9;
+}
+
+.doctor-quiz-card p {
+    color: #827991;
+    margin: 8px 0 15px;
+    font-size: 13px;
+}
+
+.empty-state {
+    background: #faf7ff;
+    padding: 35px;
+    border-radius: 18px;
+    text-align: center;
+    color: #827991;
+}
+
+.empty-state h3 {
+    color: var(--purple);
+    margin-bottom: 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #958aa7;
+    font-size: 12px;
+}
+
+@media(max-width:600px) {
+    header h1 {
+        font-size: 29px;
+    }
+
+    .lecture-details {
+        padding: 17px;
+    }
+
+    .tabs {
+        gap: 7px;
+    }
+
+    .tab-btn {
+        font-size: 11px;
+        padding: 9px;
+    }
+}
+.quiz-feedback {
+    display: block !important;
+    width: 100%;
+    margin-top: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    background: #f3f0ff;
+    color: #333;
+    font-size: 15px;
+    line-height: 1.7;
+    border: 1px solid #c4b5fd;
+}
+
+.quiz-feedback p {
+    margin: 5px 0;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-content">
+        <h1>✨ Last Minute</h1>
+        <p>One night. One final review. You've got this.</p>
+    </div>
+</header>
+
+<div class="container">
+
+    <!-- HOME -->
+    <section id="homePage">
+        <h2 class="section-title">Your Study Space 📚</h2>
+        <div class="subjects-grid" id="subjectsGrid"></div>
+    </section>
+
+    <!-- SUBJECT PAGE -->
+    <section id="subjectPage" class="hidden">
+
+        <button class="back-btn" onclick="goHome()">← Back to Subjects</button>
+
+        <div class="subject-heading">
+            <h2 id="subjectTitle"></h2>
+            <p id="subjectDescription"></p>
+        </div>
+
+        <h2 class="section-title">Available Lectures</h2>
+
+        <div class="lecture-list" id="lectureList"></div>
+
+        <div class="lecture-details hidden" id="lectureDetails">
+
+            <div class="lecture-header">
+                <h2 id="lectureTitle"></h2>
+                <p id="lectureSubtitle"></p>
+                <a id="lecturePDF" class="pdf-btn" href="#" target="_blank">
+                    📄 Open Lecture File
+                </a>
+            </div>
+
+            <div class="tabs">
+
+                <button class="tab-btn active"
+                    onclick="showTab('summary', this)">
+                    📝 Summary
+                </button>
+
+                <button class="tab-btn"
+                    onclick="showTab('code', this)">
+                    💻 Important Code
+                </button>
+
+                <button class="tab-btn"
+                    onclick="showTab('quiz', this)">
+                    🧠 Practice Quiz
+                </button>
+
+                <button class="tab-btn"
+                    onclick="showTab('flashcards', this)">
+                    🃏 Flashcards
+                </button>
+
+                <button class="tab-btn"
+                    onclick="showTab('doctor', this)">
+                    👩‍🏫 Doctor's Quizzes
+                </button>
+
+            </div>
+
+            <div id="panel"></div>
+
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    Made for better studying 💜 | Last Minute
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+
+<script>
+
+// =====================================
+// SUBJECTS DATA
+// =====================================
+
+const SUBJECTS = [
+
+
+{
+    name: "Machine Learning",
+    icon: "🤖",
+    description: "Machine Learning lectures and revision",
+
+    lectures: [
+
+        {
+            title: "Lecture 1",
+            subtitle: "Machine Learning and Pattern Recognition",
+            pdf: "lectures/ml_lec1.pdf",
+
+            summary: `
+                <div class="content-section">
+
+                    <h2>1. Introduction to Machine Learning</h2>
+
+                    <p>
+                    Machine Learning is a field of Artificial Intelligence
+                    that allows computers to learn patterns from data
+                    and make predictions without being explicitly programmed
+                    for every task.
+                    </p>
+
+                    <h3>Types of Machine Learning</h3>
+
+                    <ul>
+                        <li><b>Supervised Learning:</b> Learning from labeled data.</li>
+                        <li><b>Unsupervised Learning:</b> Finding patterns in unlabeled data.</li>
+                        <li><b>Reinforcement Learning:</b> Learning through rewards and penalties.</li>
+                    </ul>
+
+                    <h2>2. Classification</h2>
+
+                    <p>
+                    Classification is a supervised learning task where
+                    the model predicts a category or class.
+                    </p>
+
+                    <h3>MNIST Dataset</h3>
+
+                    <p>
+                    MNIST contains handwritten digit images from 0 to 9.
+                    It is commonly used to practice classification.
+                    </p>
+
+                    <h2>3. Binary Classification</h2>
+
+                    <p>
+                    Binary classification predicts one of two possible classes.
+                    Example: determining whether an image contains digit 5 or not.
+                    </p>
+
+                    <h2>4. Performance Measures</h2>
+
+                    <ul>
+                        <li>Accuracy</li>
+                        <li>Precision</li>
+                        <li>Recall</li>
+                        <li>F1 Score</li>
+                        <li>ROC Curve</li>
+                        <li>AUC</li>
+                    </ul>
+
+                    <h3>Confusion Matrix</h3>
+
+                    <ul>
+                        <li>True Positive (TP)</li>
+                        <li>True Negative (TN)</li>
+                        <li>False Positive (FP)</li>
+                        <li>False Negative (FN)</li>
+                    </ul>
+
+                    <h3>Precision</h3>
+                    <p>Precision = TP / (TP + FP)</p>
+
+                    <h3>Recall</h3>
+                    <p>Recall = TP / (TP + FN)</p>
+
+                    <h3>F1 Score</h3>
+                    <p>F1 = 2 × (Precision × Recall) / (Precision + Recall)</p>
+
+                    <h2>5. Multiclass Classification</h2>
+
+                    <p>
+                    Multiclass classification predicts one class
+                    from more than two possible classes.
+                    </p>
+
+                    <ul>
+                        <li>One-versus-Rest (OvR)</li>
+                        <li>One-versus-One (OvO)</li>
+                    </ul>
+
+                    <h2>6. ROC and AUC</h2>
+
+                    <p>
+                    ROC is a curve that compares True Positive Rate
+                    with False Positive Rate.
+                    AUC measures the area under the ROC curve.
+                    </p>
+
+                    <h2>7. Error Analysis</h2>
+
+                    <p>
+                    Error analysis helps identify the types of mistakes
+                    made by a machine learning model.
+                    </p>
+
+                    <h2>8. Multilabel and Multioutput Classification</h2>
+
+                    <ul>
+                        <li>Multilabel: One example can have multiple labels.</li>
+                        <li>Multioutput: The model predicts multiple outputs.</li>
+                    </ul>
+
+                </div>
+            `,
+
+            code: "",
+
+            quiz: [],
+
+            flashcards: [],
+
+            doctorQuizzes: []
+        },
+
+        {
+            title: "Lecture 2",
+            subtitle: "End-to-End Machine Learning Project",
+            pdf: "lectures/ml_lec2.pdf",
+
+            summary: `
+                <div class="content-section">
+
+                    <h2>1. Machine Learning Project Workflow</h2>
+
+                    <ol>
+                        <li>Look at the big picture.</li>
+                        <li>Get the data.</li>
+                        <li>Explore and visualize the data.</li>
+                        <li>Prepare the data.</li>
+                        <li>Select and train a model.</li>
+                        <li>Fine-tune the model.</li>
+                        <li>Present the solution.</li>
+                        <li>Launch, monitor and maintain the system.</li>
+                    </ol>
+
+                    <h2>2. Data Exploration</h2>
+
+                    <p>
+                    Data exploration helps us understand the dataset
+                    before training a model.
+                    </p>
+
+                    <h3>Important operations</h3>
+
+                    <ul>
+                        <li>Inspect dataset structure.</li>
+                        <li>Calculate statistics.</li>
+                        <li>Visualize distributions.</li>
+                        <li>Study correlations.</li>
+                        <li>Identify missing values.</li>
+                    </ul>
+
+                    <h2>3. Data Preparation</h2>
+
+                    <ul>
+                        <li>Data cleaning</li>
+                        <li>Handling missing values</li>
+                        <li>Encoding categorical features</li>
+                        <li>Feature scaling</li>
+                        <li>Creating new features</li>
+                    </ul>
+
+                    <h2>4. Model Evaluation</h2>
+
+                    <p>
+                    RMSE and MAE are common regression evaluation metrics.
+                    </p>
+
+                    <p><b>RMSE:</b> Root Mean Squared Error.</p>
+                    <p><b>MAE:</b> Mean Absolute Error.</p>
+
+                    <h2>5. Cross Validation</h2>
+
+                    <p>
+                    Cross validation evaluates a model using different
+                    subsets of the training data.
+                    </p>
+
+                    <h2>6. Hyperparameter Tuning</h2>
+
+                    <ul>
+                        <li>GridSearchCV</li>
+                        <li>RandomizedSearchCV</li>
+                    </ul>
+
+                </div>
+            `,
+
+            code: `
+                <h3>Important Python / Scikit-Learn Functions</h3>
+
+                <pre><code class="language-python">
+# Split data into training and testing sets
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+# Calculate correlations
+corr_matrix = data.corr()
+
+# Remove missing values
+data.dropna()
+
+# Fill missing values
+data.fillna(data.median(numeric_only=True))
+
+# Evaluate using RMSE
+from sklearn.metrics import mean_squared_error
+import numpy as np
+
+rmse = np.sqrt(mean_squared_error(y_test, predictions))
+
+# Cross validation
+from sklearn.model_selection import cross_val_score
+
+scores = cross_val_score(
+    model, X_train, y_train,
+    scoring="neg_mean_squared_error",
+    cv=10
+)
+                </code></pre>
+
+                <pre><code class="language-python">
+# Grid Search
+from sklearn.model_selection import GridSearchCV
+
+grid_search = GridSearchCV(
+    model,
+    param_grid,
+    cv=5,
+    scoring="neg_mean_squared_error"
+)
+
+grid_search.fit(X_train, y_train)
+                </code></pre>
+            `,
+
+            quiz: [],
+
+            flashcards: [],
+
+            doctorQuizzes: []
+        },
+
+        {
+            title: "Lecture 3",
+            subtitle: "Classification",
+            pdf: "lectures/ml_lec3.pdf",
+
+            summary: `
+                <div class="content-section">
+
+                    <h2>1. Classification</h2>
+
+                    <p>
+                    Classification is used to predict discrete classes.
+                    </p>
+
+                    <h2>2. MNIST</h2>
+
+                    <p>
+                    MNIST is a dataset of handwritten digits
+                    used for image classification.
+                    </p>
+
+                    <h2>3. Binary Classifier</h2>
+
+                    <p>
+                    A binary classifier distinguishes between two classes.
+                    </p>
+
+                    <h2>4. Confusion Matrix</h2>
+
+                    <ul>
+                        <li>TP: Correctly predicted positive.</li>
+                        <li>TN: Correctly predicted negative.</li>
+                        <li>FP: Incorrectly predicted positive.</li>
+                        <li>FN: Incorrectly predicted negative.</li>
+                    </ul>
+
+                    <h2>5. Evaluation Metrics</h2>
+
+                    <p>Precision = TP / (TP + FP)</p>
+                    <p>Recall = TP / (TP + FN)</p>
+                    <p>F1 Score = 2 × Precision × Recall / (Precision + Recall)</p>
+
+                    <h2>6. ROC Curve</h2>
+
+                    <p>
+                    ROC plots the True Positive Rate against
+                    the False Positive Rate.
+                    </p>
+
+                    <h2>7. Multiclass Classification</h2>
+
+                    <ul>
+                        <li>One-versus-Rest (OvR)</li>
+                        <li>One-versus-One (OvO)</li>
+                    </ul>
+
+                    <h2>8. Multilabel Classification</h2>
+
+                    <p>
+                    Each sample can belong to multiple classes at the same time.
+                    </p>
+
+                    <h2>9. Multioutput Classification</h2>
+
+                    <p>
+                    A model predicts more than one output for each sample.
+                    </p>
+
+                </div>
+            `,
+
+            code: `
+                <h3>Classification Examples</h3>
+
+                <pre><code class="language-python">
+from sklearn.linear_model import SGDClassifier
+
+sgd_clf = SGDClassifier(random_state=42)
+
+sgd_clf.fit(X_train, y_train)
+
+prediction = sgd_clf.predict([some_digit])
+                </code></pre>
+
+                <pre><code class="language-python">
+from sklearn.metrics import confusion_matrix
+
+cm = confusion_matrix(y_true, y_pred)
+
+print(cm)
+                </code></pre>
+
+                <pre><code class="language-python">
+from sklearn.metrics import precision_score
+from sklearn.metrics import recall_score
+from sklearn.metrics import f1_score
+
+precision = precision_score(y_true, y_pred)
+recall = recall_score(y_true, y_pred)
+f1 = f1_score(y_true, y_pred)
+                </code></pre>
+
+                <pre><code class="language-python">
+from sklearn.metrics import roc_curve
+from sklearn.metrics import roc_auc_score
+
+fpr, tpr, thresholds = roc_curve(
+    y_true, y_scores
+)
+
+auc = roc_auc_score(y_true, y_scores)
+                </code></pre>
+            `,
+
+            quiz: [],
+
+            flashcards: [],
+
+            doctorQuizzes: []
+        },
+
+        {
+            title: "Lecture 4",
+            subtitle: "Training Models",
+            pdf: "lectures/ml_lec4.pdf",
+
+            summary: `
+                <div class="content-section">
+
+                    <h2>1. Linear Regression</h2>
+
+                    <p>
+                    Linear Regression predicts a numerical value
+                    using a linear relationship between input features
+                    and the target.
+                    </p>
+
+                    <h2>2. Normal Equation</h2>
+
+                    <p>
+                    The Normal Equation calculates the parameters
+                    that minimize the cost function directly.
+                    </p>
+
+                    <h2>3. Singular Value Decomposition (SVD)</h2>
+
+                    <p>
+                    SVD is a matrix factorization technique
+                    used to solve linear regression problems.
+                    </p>
+
+                    <h2>4. Computational Complexity</h2>
+
+                    <p>
+                    Computational complexity describes how the
+                    required computation changes as dataset size increases.
+                    </p>
+
+                    <h2>5. Gradient Descent</h2>
+
+                    <p>
+                    Gradient Descent is an optimization algorithm
+                    that updates model parameters to reduce the cost function.
+                    </p>
+
+                    <h3>Types of Gradient Descent</h3>
+
+                    <ul>
+                        <li>Batch Gradient Descent</li>
+                        <li>Stochastic Gradient Descent (SGD)</li>
+                        <li>Mini-batch Gradient Descent</li>
+                    </ul>
+
+                    <h2>6. Learning Rate</h2>
+
+                    <p>
+                    The learning rate controls the size of each
+                    parameter update.
+                    </p>
+
+                    <h2>7. Cost Function</h2>
+
+                    <p>
+                    The cost function measures the difference
+                    between predicted values and actual values.
+                    </p>
+
+                </div>
+            `,
+
+            code: `
+                <h3>Linear Regression</h3>
+
+                <pre><code class="language-python">
+from sklearn.linear_model import LinearRegression
+
+lin_reg = LinearRegression()
+
+lin_reg.fit(X_train, y_train)
+
+predictions = lin_reg.predict(X_test)
+                </code></pre>
+
+                <h3>Gradient Descent Example</h3>
+
+                <pre><code class="language-python">
+import numpy as np
+
+eta = 0.1
+n_iterations = 1000
+m = 100
+
+theta = np.random.randn(2, 1)
+
+for iteration in range(n_iterations):
+
+    gradients = 2/m * X_b.T.dot(
+        X_b.dot(theta) - y
+    )
+
+    theta = theta - eta * gradients
+                </code></pre>
+
+                <h3>Stochastic Gradient Descent</h3>
+
+                <pre><code class="language-python">
+from sklearn.linear_model import SGDRegressor
+
+sgd_reg = SGDRegressor(
+    max_iter=1000,
+    tol=1e-3,
+    penalty=None,
+    eta0=0.1
+)
+
+sgd_reg.fit(X, y.ravel())
+                </code></pre>
+            `,
+
+            quiz: [],
+
+            flashcards: [],
+
+            doctorQuizzes: []
+        }
+
+    ]
+}
+];
+
+
+// =====================================
+// MACHINE LEARNING - CODES & QUIZZES
+// =====================================
+
+const ml = SUBJECTS.find(s => s.name === "Machine Learning");
+
+
+// LECTURE 1
+ml.lectures[0].code = `
+<h3>1. Load and Explore Dataset</h3>
+
+<pre><code class="language-python">
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+data = pd.read_csv("data.csv")
+
+print(data.head())
+print(data.info())
+print(data.describe())
+print(data.shape)
+</code></pre>
+
+<h3>2. Visualize Data</h3>
+
+<pre><code class="language-python">
+data.hist(bins=50, figsize=(15, 10))
+plt.show()
+
+data.plot(kind="scatter", x="feature1", y="feature2")
+plt.show()
+</code></pre>
+
+<h3>3. Train a Model</h3>
+
+<pre><code class="language-python">
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+</code></pre>
+`;
+
+ml.lectures[0].quiz = [
+{
+    question: "What is Machine Learning?",
+    options: [
+        "A type of computer hardware",
+        "A field that enables computers to learn from data",
+        "A programming language",
+        "An operating system"
+    ],
+    answer: 1,
+    explanation: "Machine Learning is a field of Artificial Intelligence that allows computers to learn patterns from data and make predictions without being explicitly programmed for every task."
+},
+{
+    question: "Which learning type uses labeled data?",
+    options: [
+        "Unsupervised Learning",
+        "Reinforcement Learning",
+        "Supervised Learning",
+        "Deep Search"
+    ],
+    answer: 2,
+    explanation: "Supervised Learning uses labeled data, meaning each training example contains input data and its correct output."
+},
+{
+    question: "Which type of learning discovers hidden patterns in unlabeled data?",
+    options: [
+        "Supervised Learning",
+        "Unsupervised Learning",
+        "Classification",
+        "Regression"
+    ],
+    answer: 1,
+    explanation: "Unsupervised Learning discovers hidden patterns and structures in data that has no predefined labels."
+},
+{
+    question: "What is the purpose of train_test_split()?",
+    options: [
+        "Delete data",
+        "Visualize data",
+        "Split data into training and testing sets",
+        "Calculate accuracy"
+    ],
+    answer: 2,
+    explanation: "train_test_split() divides a dataset into training data, used to train the model, and testing data, used to evaluate its performance."
+},
+{
+    question: "Which library is commonly used for data manipulation?",
+    options: [
+        "Pandas",
+        "Random",
+        "OS",
+        "Math"
+    ],
+    answer: 0,
+    explanation: "Pandas is a Python library used to manipulate and analyze structured data using Series and DataFrames."
+}
+];
+(() => {
+    const mlSubject = SUBJECTS.find(s => s.name === "Machine Learning");
+
+    if (!mlSubject) {
+        console.error("Machine Learning subject not found!");
+        return;
+    }
+
+    mlSubject.lectures[0].doctorQuizzes = [
+    {
+        title: "Doctor Quiz - Comprehensive ML Quizzes",
+        doctor: "Machine Learning",
+        questions: [
+            {
+                question: "Increasing precision ....................... recall, and vice versa.",
+                options: [
+                    "reduces",
+                    "increases",
+                    "not infulence",
+                    "none of them"
+                ],
+                answer: 0
+            },
+            {
+                question: "(1-ACC) represents the number of misclassified samples from both positive and negative classes",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 0
+            },
+            {
+                question: "Recall is the accuracy of the positive predictions by the classifier.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 1
+            },
+            {
+                question: "...............represents the harmonic mean of precision and recall.",
+                options: [
+                    "F-measure",
+                    "Matthews Correlation Coefficient",
+                    "Youden's Index",
+                    "none of them"
+                ],
+                answer: 0
+            },
+            {
+                question: "What is the ROC AUC of a perfect classifier",
+                options: [
+                    "1",
+                    "0",
+                    "0.5",
+                    "none of them"
+                ],
+                answer: 0
+            },
+            {
+                question: "What is the ROC AUC of a purely random classifier",
+                options: [
+                    "0.5",
+                    "1",
+                    "0",
+                    "none of them"
+                ],
+                answer: 0
+            },
+            {
+                question: "images in MINIST dataset are",
+                options: [
+                    "grey images",
+                    "black and white images",
+                    "coloerd images",
+                    "none of them"
+                ],
+                answer: 0
+            },
+            {
+                question: "StratifiedKFold class performs stratified sampling to produce folds that contain a representative ratio of each class",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 0
+            },
+            {
+                question: "........is sensitive to changes in data distributions.",
+                options: [
+                    "Jaccard"
+                ],
+                answer: 0
+            },
+            {
+                question: "MINIST Dataset is actually already split into a training set (the first images) and a test set (the last ............ images)",
+                options: [
+                    "60000, 10000",
+                    "600000, 10000",
+                    "60000, 100000",
+                    "6000, 1000"
+                ],
+                answer: 0
+            },
+            {
+                question: "What is the purpose of using a decision function() in machine learning",
+                options: [
+                    "To make predictions about the class of each instance",
+                    "To calculate the probability of each class for each instance",
+                    "To tune the hyperparameters of a machine learning model",
+                    "To evaluate the performance of a machine learning model"
+                ],
+                answer: 0
+            },
+            {
+                question: "in MINIST Dataset, Each image is labeled with the letter it represents",
+                options: [
+                    "false",
+                    "true"
+                ],
+                answer: 0
+            },
+            {
+                question: "MIMIST Dataset is actually already split into a .............(the first 60,000 images) and a...............(the last 10,000 images)",
+                options: [
+                    "training set, test set",
+                    "test set training cat"
+                ],
+                answer: 0
+            },
+            {
+                question: "Some algorithms, such as ................... scale poorly with the size of the training set.",
+                options: [
+                    "Support Vector Machine classifiers",
+                    "Random Forest",
+                    "SGD classifiers",
+                    "Naive Bayes classifiers"
+                ],
+                answer: 0
+            },
+            {
+                question: "The SGDClassifier relies on randomness during training (hence the name \"stochastic\").",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 0
+            },
+            {
+                question: "Precision is the ....................... of the classifier.",
+                options: [
+                    "accuracy of the positive predictions",
+                    "ratio of positive instances that are correctly detected",
+                    "both of them",
+                    "none of them"
+                ],
+                answer: 0
+            },
+            {
+                question: "The ROC curve is common tool used with ................... classifiers",
+                options: [
+                    "binary"
+                ],
+                answer: 0
+            },
+            {
+                question: "in MINIST Dataset, A Data key containing an array with one row per sample and two column per feature.",
+                options: [
+                    "false",
+                    "true"
+                ],
+                answer: 0
+            },
+            {
+                question: "Which of the following algorithms is NOT capable of handling multiple classes natively",
+                options: [
+                    "Logistic regression",
+                    "Random Forest"
+                ],
+                answer: 0
+            },
+            {
+                question: "In The One-versus-one (OvO) Strategy, you need ................... classifiers for MNIST dataset",
+                options: [
+                    "45",
+                    "N×(N-1)/2",
+                    "both of them",
+                    "none of them"
+                ],
+                answer: 2
+            },
+            {
+                question: "The ................... is the harmonic mean of precision and recall.",
+                options: [
+                    "F1 score"
+                ],
+                answer: 0
+            },
+            {
+                question: "A binary classification algorithm is more computationally expensive than a multiclass classification algorithm.",
+                options: [
+                    "false",
+                    "true"
+                ],
+                answer: 0
+            },
+            {
+                question: "If that score is greater than a threshold, it assigns the instance to the ...................",
+                options: [
+                    "positive class",
+                    "negative class"
+                ],
+                answer: 0
+            },
+            {
+                question: "SGDClassifier computes a score based on a ................... function",
+                options: [
+                    "decision",
+                    "Precision",
+                    "F1-score",
+                    "none of them"
+                ],
+                answer: 0
+            },
+            {
+                question: "ROC is stands for",
+                options: [
+                    "Receiver Operating Characteristic"
+                ],
+                answer: 0
+            },
+            {
+                question: "harmonic mean ...................",
+                options: [
+                    "treats all values equally",
+                    "gives much more weight to low values",
+                    "gives much more weight to high values",
+                    "none of them"
+                ],
+                answer: 1
+            },
+            {
+                question: "The ROC curve plots the ................... against the false positive rate (FPR).",
+                options: [
+                    "recall",
+                    "true positive rate",
+                    "both of them",
+                    "none of them"
+                ],
+                answer: 1
+            },
+            {
+                question: "K-fold cross-validation means splitting the testing set into K folds, then training them on each fold using a model trained on the remaining folds.",
+                options: [
+                    "false",
+                    "true"
+                ],
+                answer: 0
+            },
+            {
+                question: "SGD deals with training instances dependently, one at a time (which makes SGD well suited for online learning).",
+                options: [
+                    "false",
+                    "true"
+                ],
+                answer: 1
+            },
+            {
+                question: "If that threshold is greater than a score, it assigns the instance to the ...................",
+                options: [
+                    "negative class",
+                    "positive class",
+                    "both of them",
+                    "none of them"
+                ],
+                answer: 0
+            },
+            {
+                question: "in MINIST Dataset, Each image is ................... features.",
+                options: [
+                    "784"
+                ],
+                answer: 0
+            },
+            {
+                question: "A perfect classifier would have only true positives and false negatives",
+                options: [
+                    "false",
+                    "true"
+                ],
+                answer: 0
+                
+            },
+            {
+                question: "precision recall curve() computes ................... for all possible thresholds.",
+                options: [
+                    "precision and recall",
+                    "precision",
+                    "recall"
+                ],
+                answer: 0
+            },
+            {
+                question: "the classifier will only get a ................... F1 score if both recall and precision are ...................",
+                options: [
+                    "low, high",
+                    "high, low",
+                    "high, high",
+                    "none of them"
+                ],
+                answer: 2
+            },
+            {
+                question: "A much better way to evaluate the performance of a classifier is to look at the confusion matrix",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 0
+            },
+            {
+                question: "K-fold cross-validation is a method of evaluating the performance of a machine learning model.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 0
+            },
+            {
+                question: "the purpose of a confusion matrix is identifying the most important features in a dataset",
+                options: [
+                    "false",
+                    "true"
+                ],
+                answer: 0
+            },
+            {
+                question: "Each row in a confusion matrix represents an ...................",
+                options: [
+                    "actual class",
+                    "predicted class",
+                    "both of them",
+                    "none of them"
+                ],
+                answer: 0
+            },
+            {
+                question: "The higher the recall (TPR), the more false positives (FPR) the classifier produces.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 0
+            },
+            {
+                question: "MNIST Dataset is a set of ................... small images of digits handwritten",
+                options: [
+                    "70,000",
+                    "75,000",
+                    "7000",
+                    "700,000"
+                ],
+                answer: 0
+            },
+            {
+                question: "in MINIST Dataset, The test set is already shuffled",
+                options: [
+                    "false",
+                    "true"
+                ],
+                answer: 0
+            },
+            {
+                question: "the confusion matrix of perfect classifier would have ................... values only on its main diagonal",
+                options: [
+                    "nonzero",
+                    "zero",
+                    "ones",
+                    "none of them"
+                ],
+                answer: 0
+            },
+            {
+                question: "the combination of precision and recall into a single metric called confusion matrix",
+                options: [
+                    "false",
+                    "true"
+                ],
+                answer: 0
+            },
+            {
+                question: "Increasing precision reduces recall, and vice versa. This is called the precision/recall trade-off",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 0
+            },
+            {
+                question: "Scikit-Learn let you set the threshold directly",
+                options: [
+                    "false",
+                    "true"
+                ],
+                answer: 0
+            },
+            {
+                question: "What is the purpose of a confusion matrix?",
+                options: [
+                    "To evaluate the performance of a classification algorithm",
+                    "To identify the most important features in a dataset"
+                ],
+                answer: 0
+            },
+            {
+                question: "............... represents the correlation between the observed and predicted classifications.",
+                options: [
+                    "Matthews Correlation Coefficient",
+                    "Youden's Index",
+                    "F-measure",
+                    "none of them"
+                ],
+                answer: 0
+            },
+            {
+                question: "................. performs K-fold cross-validation and return the evaluation scores",
+                options: [
+                    "cross val score()",
+                    "cross val predict()",
+                    "cross test predict()",
+                    "none of them"
+                ],
+                answer: 0
+            },
+            {
+                question: "What is the difference between StratifiedKFold and regular KFold cross-validation",
+                options: [
+                    "StratifiedKFold performs stratified sampling, while regular KFold does not",
+                    "StratifiedKFold is always slower than regular Kfold",
+                    "StratifiedKFold is only useful for imbalanced datasets.",
+                    "There is no difference between StratifiedKFold and regular Kfold"
+                ],
+                answer: 0
+            },
+            {
+                question: "The general idea of ................... is to count the number of times instances of class A are classified as class B",
+                options: [
+                    "confusion matrix",
+                    "StratifiedKFold",
+                    "regular Kfold",
+                    "none of them"
+                ],
+                answer: 0
+            },
+            {
+                question: "Which of the following is NOT a type of classification problem",
+                options: [
+                    "Regression",
+                    "Binary classification",
+                    "Multi-class classification",
+                    "none of them"
+                ],
+                answer: 0
+            },
+            {
+                question: "in MINIST Dataset, A ................... key describing the dataset.",
+                options: [
+                    "DESCR",
+                    "data",
+                    "target",
+                    "none of them"
+                ],
+                answer: 0
+            },
+            {
+                question: "in MINIST Dataset, A ................... key containing an array with one row per instance and one column per feature.",
+                options: [
+                    "data"
+                ],
+                answer: 0
+            },
+            {
+                question: "Which of the following is TRUE about the StratifiedKFold class",
+                options: [
+                    "all of them",
+                    "It is a cross-validation method that is specifically designed for classification problems",
+                    "It produces folds that contain a representative ratio of each class in the dataset",
+                    "It can be used to improve the performance of machine learning models on imbalanced datasets"
+                ],
+                answer: 0
+            },
+            {
+                question: ".................. represents the number of misclassified samples from both positive and negative classes",
+                options: [
+                    "Error Rate (ERR)"
+                ],
+                answer: 0
+            },
+            {
+                question: "in MINIST Dataset, A ................... key containing an array with the labels",
+                options: [
+                    "target",
+                    "DESCR",
+                    "data",
+                    "none of them"
+                ],
+                answer: 0
+            },
+            {
+                question: ".................. provides many helper functions to download popular datasets",
+                options: [
+                    "Scikit-Learn",
+                    "keras",
+                    "pandas",
+                    "tensorflow"
+                ],
+                answer: 0
+            },
+            {
+                question: "............... is the inverse precision.",
+                options: [
+                    "Negative Predictive Value"
+                ],
+                answer: 0
+            },
+            {
+                question: ".................. represents the proportion of positive samples that were correctly classified to the total number of positive predicted samples.",
+                options: [
+                    "Positive Prediction Value",
+                    "Precision",
+                    "both of them",
+                    "none of them"
+                ],
+                answer: 2
+            },
+            {
+                question: "The Random Forest Classifier class does not have a decision function() method.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 0
+            },
+            {
+                question: ".................. represents the positive correctly classified samples to the total number of positive samples.",
+                options: [
+                    "all of them"
+                ],
+                answer: 0
+            },
+            {
+                question: ".................. defined as a ratio between the correctly classified samples to the total number of samples.",
+                options: [
+                    "Accuracy (ACC)",
+                    "Error Rate",
+                    "Sensitivity",
+                    "Specificity"
+                ],
+                answer: 0
+            },
+            {
+                question: "Youden's Index (YI) =",
+                options: [
+                    "TPR + TNR - 1",
+                    "TPR+TNR+1",
+                    "TPR+NPV-1",
+                    "TPR+PPV-1"
+                ],
+                answer: 0
+            },
+            {
+                question: "The Random Forest Classifier class have predict proba() instead of decision function() method.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 0
+            },
+            {
+                question: "Each column in a confusion matrix represents an ...................",
+                options: [
+                    "predicted class",
+                    "actual class"
+                ],
+                answer: 0
+            },
+            {
+                question: "SGD well suited for ................... learning",
+                options: [
+                    "batch",
+                    "online",
+                    "all of them",
+                    "none of them"
+                ],
+                answer: 1
+            },
+            {
+                question: "There are various strategies that you can use to perform multiclass classification with multiple binary classifiers.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 0
+            },
+            {
+                question: ".................. performs K-fold cross-validation and returns the predictions made on each test fold",
+                options: [
+                    "cross val predict()"
+                ],
+                answer: 0
+            },
+            {
+                question: ".................. represents the ratio of the correctly classified negative samples to the total number of negative samples",
+                options: [
+                    "Specificity",
+                    "True Negative Rate",
+                    "both of them",
+                    "none of them"
+                ],
+                answer: 2
+            },
+            {
+                question: "MNIST Dataset is a set of small images of ................... by high school students and employees of the US Census Bureau.",
+                options: [
+                    "digits handwritten",
+                    "letters handwritten",
+                    "words handwritten",
+                    "none of them"
+                ],
+                answer: 0
+            },
+            {
+                question: "Just like the ................... function, ................... performs K-fold cross-validation, but instead of returning the evaluation scores, it returns the predictions made on each test fold.",
+                options: [
+                    "cross val score(), cross val predict()",
+                    "cross val predict(), cross val score()",
+                    "cross val test(), cross val score()",
+                    "none of them"
+                ],
+                answer: 0
+            },
+            {
+                question: "SGD is stands for",
+                options: [
+                    "Stochastic Gradient Descent",
+                    "Stochastic Graded Descent",
+                    "Stochastic Gradient Describtion",
+                    "none of them"
+                ],
+                answer: 0
+            },
+            {
+                question: "What is the difference between a binary classification algorithm and a multiclass classification algorithm",
+                options: [
+                    "A binary classification algorithm can only predict two classes, while a multiclass classification algorithm can predict three or more classes.",
+                    "A binary classification algorithm is more accurate than a multiclass classification algorithm.",
+                    "A binary classification algorithm is more computationally expensive than a multiclass classification algorithm.",
+                    "A binary classification algorithm is not as flexible as a multiclass classification algorithm."
+                ],
+                answer: 0
+            },
+            {
+                question: ".................. evaluates the discriminative power of the test",
+                options: [
+                    "YI",
+                    "MCC",
+                    "DSC",
+                    "none of them"
+                ],
+                answer: 0
+            },
+            {
+                question: "in MINIST Dataset, Each image is ................... pixels.",
+                options: [
+                    "28×28"
+                ],
+                answer: 0
+            },
+            {
+                question: "Both the RMSE and the MAE are ways to measure the distance between the vector of predictions and the vector of target values.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 0
+            },
+            {
+                question: "Computing the RMSE corresponds to the Manhattan norm. It is also called the l2 norm, noted ||.||2 (or just ||.||).",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 1
+            },
+            {
+                question: "The common ways to get all attributes to have the same scale: min-max scaling and standardization",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 0
+            },
+            {
+                question: "The correlation coefficient ranges from -2 to 0.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 1
+            },
+            {
+                question: "Pipelines is a sequence of data processing components.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 0
+            },
+            {
+                question: "Standardization bound values to a specific range",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 1
+            },
+            {
+                question: "Scikit-Learn provides a OneHotEncoder class to convert categorical values into one-hot vectors.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 0
+            },
+            {
+                question: "The correlation coefficient when it is close to 1, it means that there is a strong negative correlation.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 1
+            },
+            {
+                question: "Coefficients close to 0 mean that there is no linear correlation.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 0
+            },
+            {
+                question: "Scikit-Learn provides a transformer called MinMaxScaler for normalization",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 0
+            },
+            {
+                question: "To get the data you need to have Python installed.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 0
+            },
+            {
+                question: "RMSE(X, h), X is the number of instances in the dataset.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 1
+            },
+            {
+                question: "The correlation coefficient when it is close to -1, it means that there is a strong positive correlation.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 1
+            },
+            {
+                question: "In Min-max Scaling, values are shifted and rescaled so that they end up ranging from 0 to 1",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 0
+            },
+            {
+                question: "Building a model on top of many other models is called Ensemble Learning.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 0
+            },
+            {
+                question: "The correlation coefficient ranges from -1 to 1.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 0
+            },
+            {
+                question: "In Min-max Scaling, values are shifted and rescaled so that they end up ranging from -1 to 1",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 1
+            },
+            {
+                question: "With few exceptions, ML algorithms don't perform well when the input numerical attributes have very different scales.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 0
+            },
+            {
+                question: "Most ML algorithms prefer to work with numbers",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 0
+            },
+            {
+                question: "The higher the norm index, the more it focuses on large values and neglects small ones.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 0
+            },
+            {
+                question: "If the training set is very large, you may want to sample an exploration set, to make manipulations easy and fast.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 0
+            },
+            {
+                question: "Standardization is much less affected by outliers",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 0
+            },
+            {
+                question: "Scikit-Learn provides a transformer called StandardScaler for standardization.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 0
+            },
+            {
+                question: "Random Forests work by training many Decision Trees on random subsets of the features",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 0
+            },
+            {
+                question: "RMSE(X, h) is the cost function measured on the set of examples using your hypothesis h.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 0
+            },
+            {
+                question: "Coefficients close to 1 mean that there is no linear correlation.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 1
+            },
+            {
+                question: "Scikit-Learn provides a handy class to take care of missing values: SimpleImputer.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 0
+            },
+            {
+                question: "To convert categories from text to numbers. We can use Scikit-Learn's Ordinal Encoder class.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 0
+            },
+            {
+                question: "To get summary of each numerical attribute in dataset, in python we use ................... method.",
+                options: [
+                    ".describe()",
+                    ".shape()",
+                    ".info()",
+                    ".head()"
+                ],
+                answer: 0
+            },
+            {
+                question: "The correlation coefficient ranges from ...................",
+                options: [
+                    "-1 to 1"
+                ],
+                answer: 0
+            },
+            {
+                question: "In Min-max Scaling, values are shifted and rescaled so that they end up ranging from ...................",
+                options: [
+                    "0 to 1",
+                    "-1 to 1",
+                    "0 to 2",
+                    "None of Them"
+                ],
+                answer: 0
+            },
+            {
+                question: "The correlation coefficient when it is close to 1, it means that there is a strong ................... correlation.",
+                options: [
+                    "positive"
+                ],
+                answer: 0
+            },
+            {
+                question: "The common way to get all attributes to have the same scale ...................",
+                options: [
+                    "min-max scaling",
+                    "standardization",
+                    "Both of Them",
+                    "None of Them"
+                ],
+                answer: 2
+            },
+            {
+                question: "Scikit-Learn provides a OneHotEncoder class to convert categorical values into ................... vectors.",
+                options: [
+                    "one-hot"
+                ],
+                answer: 0
+            },
+            {
+                question: "Computing the ................... corresponds to the l1 norm, noted ||.||1. This is sometimes called the Manhattan norm.",
+                options: [
+                    "MAE",
+                    "RMSE",
+                    "ESMR",
+                    "MESR"
+                ],
+                answer: 0
+            },
+            {
+                question: "Instead of trying out all possible combinations, it evaluates a given number of random combinations ...................",
+                options: [
+                    "Randomized Search"
+                ],
+                answer: 0
+            },
+            {
+                question: "Coefficients close to 0 mean that there is ...................",
+                options: [
+                    "no linear correlation.",
+                    "strong positive correlation",
+                    "strong negative correlation",
+                    "None of Them"
+                ],
+                answer: 0
+            },
+            {
+                question: "Scikit-Learn provides a transformer called ................... for normalization",
+                options: [
+                    "MinMaxScaler"
+                ],
+                answer: 0
+            },
+            {
+                question: "If the dataset is not too large, you can easily compute the standard correlation coefficient between every pair of attributes using the ................... method.",
+                options: [
+                    "corr()",
+                    "head()",
+                    "tail()",
+                    "info()"
+                ],
+                answer: 0
+            },
+            {
+                question: "Most ML algorithms prefer to work with ...................",
+                options: [
+                    "numbers"
+                ],
+                answer: 0
+            },
+            {
+                question: "Scikit-Learn provides a ................... class to convert categorical values into one-hot vectors.",
+                options: [
+                    "OneHotEncoder",
+                    "MinMaxScaler",
+                    "StandardScaler",
+                    "None of Them"
+                ],
+                answer: 0
+            },
+            {
+                question: "It gives an idea of how much error the system typically makes in its predictions, with a higher weight for large errors. ...................",
+                options: [
+                    "RMSE"
+                ],
+                answer: 0
+            },
+            {
+                question: "Pipelines are very common in ML systems, since there is a lot of data to manipulate.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 0
+            },
+            {
+                question: "housing.tgz contains ................... file called housing.csv with all the data.",
+                options: [
+                    "comma-separated values",
+                    "xls"
+                ],
+                answer: 0
+            },
+            {
+                question: "The ................... the norm index, the ................... it focuses on large values and neglects small ones.",
+                options: [
+                    "higher, more",
+                    "lower, more",
+                    "lower, little",
+                    "higher, little"
+                ],
+                answer: 0
+            },
+            {
+                question: "A typical performance measure for regression problems is the ...................",
+                options: [
+                    "RMSE"
+                ],
+                answer: 0
+            },
+            {
+                question: "Both the ................... and the ................... are ways to measure the distance between two vectors",
+                options: [
+                    "RMSE, MAE",
+                    "RMSE, ESMR",
+                    "MAE, MESR",
+                    "None of Them"
+                ],
+                answer: 0
+            },
+            {
+                question: "RMSE(X, h), h is the system's prediction function, also called a ...................",
+                options: [
+                    "hypothesis"
+                ],
+                answer: 0
+            },
+            {
+                question: "The correlation coefficient when it is close to -1, it means that there is a strong ................... correlation.",
+                options: [
+                    "positive",
+                    "negative",
+                    "equal",
+                    "None of Them"
+                ],
+                answer: 1
+            },
+            {
+                question: "ML algorithms don't perform well when the input numerical attributes have very ................... scales.",
+                options: [
+                    "different"
+                ],
+                answer: 0
+            },
+            {
+                question: "It will use cross-validation to evaluate all the possible combinations of hyperparameter values. ...................",
+                options: [
+                    "Randomized Search",
+                    "Grid Search",
+                    "Both of Them",
+                    "None of Them"
+                ],
+                answer: 1
+            },
+            {
+                question: "To get information about dataset, in python we use ................... method.",
+                options: [
+                    ".info()"
+                ],
+                answer: 0
+            },
+            {
+                question: "Computing the MAE corresponds to the l1 norm, noted ||.||1. This is sometimes called the Euclidean norm.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 1
+            },
+            {
+                question: "Scikit-Learn provides a transformer called ................... for standardization.",
+                options: [
+                    "StandardScaler",
+                    "MinMaxScaler"
+                ],
+                answer: 0
+            },
+            {
+                question: "Computing the ................... corresponds to the Euclidean norm. It is also called the l2 norm",
+                options: [
+                    "RMSE",
+                    "MSRE",
+                    "ESMR",
+                    "MEA"
+                ],
+                answer: 0
+            },
+            {
+                question: "Scikit-Learn provides a handy class to take care of missing values which is called ...................",
+                options: [
+                    "SimpleImputer"
+                ],
+                answer: 0
+            },
+            {
+                question: "Standardization is ................... affected by outliers",
+                options: [
+                    "much less",
+                    "more",
+                    "high",
+                    "None of Them"
+                ],
+                answer: 0
+            },
+            {
+                question: "Which type of learning relies on a teacher or desired solutions?",
+                options: [
+                    "Supervised Learning",
+                    "Unsupervised Learning",
+                    "Semi-supervised Learning",
+                    "Reinforcement Learning"
+                ],
+                answer: 0
+            },
+            {
+                question: "Machine Learning is the field of study that gives computers the ability to learn without being explicitly programmed.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 1
+            },
+            {
+                question: "What is the advantage of training the system incrementally in online learning?",
+                options: [
+                    "It allows for fast and cheap learning",
+                    "It requires limited computing resources",
+                    "It adapts to changes rapidly",
+                    "It can learn about new data on the fly"
+                ],
+                answer: 0
+            },
+            {
+                question: "What machine learning method is typically employed to detect credit card fraud?",
+                options: [
+                    "Anomaly detection",
+                    "Clustering",
+                    "Dimensionality reduction techniques",
+                    "None of the above"
+                ],
+                answer: 0
+            },
+            {
+                question: "What is The Most Important Supervised Learning Algorithms?",
+                options: [
+                    "k-Nearest Neighbors.",
+                    "Linear Regression.",
+                    "Logistic Regression.",
+                    "All of them are true"
+                ],
+                answer: 3
+            },
+            {
+                question: "Analyzing images of products on a production line to automatically classify them",
+                options: [
+                    "image classification",
+                    "semantic segmentation",
+                    "natural language processing",
+                    "text classification"
+                ],
+                answer: 0
+            },
+            {
+                question: "In Machine Learning Approach is much shorter, easier to maintain, and less accurate.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 1
+            },
+            {
+                question: "Which machine learning application involves speech recognition using RNNs, CNNs, or Transformers?",
+                options: [
+                    "Detecting credit card fraud",
+                    "Segmenting clients based on their purchases",
+                    "Representing high-dimensional datasets in diagrams",
+                    "Making an app react to voice commands"
+                ],
+                answer: 3
+            },
+            {
+                question: "What are instances fed to the system in online learning?",
+                options: [
+                    "Individually",
+                    "In large groups",
+                    "Sequentially",
+                    "Randomly"
+                ],
+                answer: 2
+            },
+            {
+                question: "what is the Unsupervised Learning Algorithms used in clustering?",
+                options: [
+                    "K-Means",
+                    "DBSCAN",
+                    "HCA",
+                    "All of them are true"
+                ],
+                answer: 3
+            },
+            {
+                question: "Automatically flagging offensive comments on discussion forums is application of....",
+                options: [
+                    "image classification",
+                    "semantic segmentation",
+                    "natural language processing",
+                    "text classification"
+                ],
+                answer: 3
+            },
+            {
+                question: "In Machine Learning Approach is much shorter, easier to maintain, and more accurate.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 1
+            },
+            {
+                question: "The examples that the system uses to learn are called the",
+                options: [
+                    "training set",
+                    "training instance",
+                    "training sample",
+                    "All of them are true"
+                ],
+                answer: 3
+            },
+            {
+                question: "One of the Solutions for underfitting reduce the regularization hyperparameter.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 0
+            },
+            {
+                question: "What is the main characteristic of supervised learning?",
+                options: [
+                    "The training set includes desired solutions",
+                    "The training data is unlabeled",
+                    "It often has plenty of unlabeled instances",
+                    "The agent can observe the environment"
+                ],
+                answer: 0
+            },
+            {
+                question: "Which machine learning technique is commonly used to make an app react to voice commands?",
+                options: [
+                    "RNNs",
+                    "CNNs",
+                    "Transformers",
+                    "All of them are true"
+                ],
+                answer: 3
+            },
+            {
+                question: "Recommending a product that a client may be interested in, based on past purchases is ...................",
+                options: [
+                    "recommender system",
+                    "NLP",
+                    "CNN",
+                    "Reinforcement Learning"
+                ],
+                answer: 0
+            },
+            {
+                question: "ML is Great for ...................",
+                options: [
+                    "Problems for which existing solutions require a lot of fine-tuning",
+                    "Complex problems for which using a traditional approach yields no good solution.",
+                    "Getting insights about complex problems",
+                    "All of them are true"
+                ],
+                answer: 3
+            },
+            {
+                question: "What are mini-batches in online learning?",
+                options: [
+                    "Large groups of instances fed to the system",
+                    "Individual instances fed to the system",
+                    "Sequential instances fed to the system",
+                    "Random instances fed to the system"
+                ],
+                answer: 0
+            },
+            {
+                question: "Google Photos are example of ...................",
+                options: [
+                    "Semi-Supervised Learning",
+                    "Unsupervised Learning",
+                    "Supervised Learning"
+                ],
+                answer: 0
+            },
+            {
+                question: "If spammers keep working around your spam filter, you will need to keep writing new rules forever.",
+                options: [
+                    "The Traditional Approach",
+                    "The Machine Learning Approach",
+                    "The Deep learning Approach",
+                    "All of them are true"
+                ],
+                answer: 0
+            },
+            {
+                question: "What is the Steps of Feature Engineering?",
+                options: [
+                    "Feature Selection Feature Extraction then Creating new features",
+                    "Feature Extraction, Feature Selection then Creating new features",
+                    "Creating new features, Feature Selection then Feature Extraction",
+                    "All of them are true"
+                ],
+                answer: 0
+            },
+            {
+                question: "The particular performance measure is called accuracy, and it is often used in classification tasks.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 0
+            },
+            {
+                question: "In Unsupervised Learning Algorithms used to Visualization and dimensionality reduction",
+                options: [
+                    "PCA",
+                    "One-class SVM",
+                    "Apriori",
+                    "All of them are true"
+                ],
+                answer: 0
+            },
+            {
+                question: "If you set a high learning rate, then your system will rapidly adapt to new data, but it will also tend to quickly forget the old data",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 0
+            },
+            {
+                question: "In online learning, if good data is fed to the system, the system's performance will gradually decline",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 1
+            },
+            {
+                question: "The Most Important Unsupervised Learning Algorithms",
+                options: [
+                    "K-Means",
+                    "PCA",
+                    "Apriori",
+                    "All of them are true"
+                ],
+                answer: 3
+            },
+            {
+                question: "It is the field of study that gives computers the ability to learn without being explicitly programmed.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 0
+            },
+            {
+                question: "Building an intelligent bot for a game is ...................",
+                options: [
+                    "Reinforcement Learning",
+                    "recommender system",
+                    "NLP",
+                    "clustering"
+                ],
+                answer: 0
+            },
+            {
+                question: "Your system will only be capable of learning if the training data contains enough relevant features and not too many irrelevant ones",
+                options: [
+                    "Poor Quality Data",
+                    "Irrelevant Features",
+                    "Nonrepresentative Training Data",
+                    "All of them are true"
+                ],
+                answer: 1
+            },
+            {
+                question: "What is the main characteristic of semi-supervised learning?",
+                options: [
+                    "The training set includes desired solutions",
+                    "The training data is unlabeled",
+                    "It often has plenty of unlabeled instances and few labeled instances",
+                    "The agent can observe the environment"
+                ],
+                answer: 2
+            },
+            {
+                question: "The ................... is the goal to simplify the data without losing too much information",
+                options: [
+                    "Dimensionality Reduction",
+                    "clustering",
+                    "classification",
+                    "regression task"
+                ],
+                answer: 0
+            },
+            {
+                question: "The ................... is the first ML application that really became mainstream, improving the lives of hundreds of millions of people.",
+                options: [
+                    "spam filter",
+                    "self driving car",
+                    "recommendation system",
+                    "All of them are true"
+                ],
+                answer: 0
+            },
+            {
+                question: "Applying ML techniques to dig into large amounts of data can help discover patterns that were not immediately apparent this called",
+                options: [
+                    "Data Mining",
+                    "The Deep learning Approach",
+                    "Machine Learning",
+                    "All of them are true"
+                ],
+                answer: 0
+            },
+            {
+                question: "The user can either define ................... that measures how bad it is",
+                options: [
+                    "utility function",
+                    "cost function",
+                    "good function",
+                    "All of them are true"
+                ],
+                answer: 1
+            },
+            {
+                question: "It automatically learns which words and phrases are good predictors of spam by detecting unusually frequent patterns of words.",
+                options: [
+                    "The Machine Learning Approach",
+                    "The Traditional Approach",
+                    "The Deep learning Approach",
+                    "All of them are true"
+                ],
+                answer: 0
+            },
+            {
+                question: "It must then learn by itself what is the best strategy, called a policy, to get the most reward over time.",
+                options: [
+                    "Semi-Supervised Learning",
+                    "Reinforcement Learning",
+                    "Supervised Learning",
+                    "unSupervised Learning"
+                ],
+                answer: 1
+            },
+            {
+                question: "One of the solution of overfitting Simplify the model by selecting one with ................... Parameters.",
+                options: [
+                    "fewer",
+                    "higher",
+                    "any",
+                    "good"
+                ],
+                answer: 0
+            },
+            {
+                question: "In Traditional Approach is much shorter, easier to maintain, and more accurate.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 1
+            },
+            {
+                question: "It means that the model performs well on the training data, but it does not generalize well.",
+                options: [
+                    "Overfitting the Training Data",
+                    "fitting the Training Data",
+                    "Bad Data",
+                    "All of them are true"
+                ],
+                answer: 0
+            },
+            {
+                question: "Constraining a model to make it simpler and reduce the risk of overfitting is called ...................",
+                options: [
+                    "regularization",
+                    "Overfitting the Training Data",
+                    "Underfitting the traning data",
+                    "feature reduction"
+                ],
+                answer: 0
+            },
+            {
+                question: "One of the most challenging of ML. If the sample is ..................., you will have sampling noise",
+                options: [
+                    "too small",
+                    "large",
+                    "fitting",
+                    "All of them are true"
+                ],
+                answer: 0
+            },
+            {
+                question: "One of the Solutions for underfitting Feed better features to the learning algorithm.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 0
+            },
+            {
+                question: "Summarizing long documents automatically is ...................",
+                options: [
+                    "text summarization",
+                    "NLU",
+                    "regression task",
+                    "All of them are true"
+                ],
+                answer: 0
+            },
+            {
+                question: "It dig into large amounts of data and discover interesting relations between attributes.",
+                options: [
+                    "Association Rule Learning",
+                    "Dimensionality Reduction",
+                    "classification",
+                    "regression task"
+                ],
+                answer: 0
+            },
+            {
+                question: "The user can either define ................... that measures how good your model is",
+                options: [
+                    "utility function",
+                    "cost function",
+                    "good function",
+                    "All of them are true"
+                ],
+                answer: 0
+            },
+            {
+                question: ".means running an algorithm to find the model parameters that will make it best fit the training data",
+                options: [
+                    "Training a model",
+                    "testing a model",
+                    "validation a model",
+                    "All of them are true"
+                ],
+                answer: 0
+            },
+            {
+                question: "Machine Learning system cannot adapt to new data.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 1
+            },
+            {
+                question: "Automatically classifying news articles is application of ...................",
+                options: [
+                    "image classification",
+                    "semantic segmentation",
+                    "natural language processing",
+                    "text classification"
+                ],
+                answer: 3
+            },
+            {
+                question: "One of the Solutions for underfitting Select a more powerful model, with less parameters.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 1
+            },
+            {
+                question: "ML is Great for ...................",
+                options: [
+                    "Problems for which existing solutions require a less of fine-tuning",
+                    "Complex problems for which using a traditional approach yields no good solution.",
+                    "Getting insights about easy problems",
+                    "All of them are true"
+                ],
+                answer: 1
+            },
+            {
+                question: "What is the main characteristic of reinforcement learning?",
+                options: [
+                    "The training set includes desired solutions",
+                    "The training data is unlabeled",
+                    "It often has plenty of unlabeled instances and few labeled instances",
+                    "The agent can observe the environment, select and perform actions, and get rewards in return (or penalties in the form of negative rewards)"
+                ],
+                answer: 3
+            },
+            {
+                question: "Traditional Approach is good for Problems for which existing solutions require a lot of fine-tuning or long lists of rules.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 1
+            },
+            {
+                question: "Underfitting the Training Data It occurs when your model is too simple to learn the underlying structure of the data.",
+                options: [
+                    "true",
+                    "false"
+                ],
+                answer: 0
+            },
+            {
+                question: "What is the main characteristic of unsupervised learning?",
+                options: [
+                    "The training set includes desired solutions",
+                    "The training data is unlabeled",
+                    "It often has plenty of unlabeled instances",
+                    "The agent can observe the environment"
+                ],
+                answer: 1
+            },
+            {
+                question: "Many robots implement ................... algorithms to learn how to walk.",
+                options: [
+                    "Semi-Supervised Learning",
+                    "Reinforcement Learning",
+                    "Supervised Learning",
+                    "unSupervised Learning"
+                ],
+                answer: 1
+            },
+            {
+                question: "Which machine learning technique is commonly used for representing complex, high-dimensional datasets in a clear and insightful diagram?",
+                options: [
+                    "RNNs",
+                    "CNNs",
+                    "Transformers",
+                    "Dimensionality reduction techniques"
+                ],
+                answer: 3
+            },
+            {
+                question: "Creating a chatbot or a personal assistant is ...................",
+                options: [
+                    "NLU",
+                    "NLP",
+                    "NUL",
+                    "CNN"
+                ],
+                answer: 0
+            },
+            {
+                question: "Detecting tumors in brain scans is ...................",
+                options: [
+                    "image classification",
+                    "semantic segmentation",
+                    "natural language processing",
+                    "text classification"
+                ],
+                answer: 1
+            },
+            {
+                question: "If your training data is full of errors, outliers, and noise is ...................",
+                options: [
+                    "Poor Quality Data",
+                    "Irrelevant Features",
+                    "Nonrepresentative Training Data",
+                    "All of them are true"
+                ],
+                answer: 0
+            },
+            {
+                question: "Forecasting your company's revenue next year, based on many performance metrics ...................",
+                options: [
+                    "text summarization",
+                    "NLP",
+                    "NUL",
+                    "regression task"
+                ],
+                answer: 3
+            },
+            {
+                question: "One important parameter of online learning systems is how fast they should adapt to changing data: this is called the ...................",
+                options: [
+                    "learning rate",
+                    "error rate",
+                    "attribute",
+                    "All of them are true"
+                ],
+                answer: 0
+            },
+            {
+                question: "What are the Solutions for Overfitting?",
+                options: [
+                    "Simplify the model",
+                    "Gather more training data",
+                    "Reduce the noise in the training data",
+                    "All of them are true"
+                ],
+                answer: 3
+            }
+        ]
+        }
+];
+// ==========================================
+// MACHINE LEARNING QUESTION EXPLANATIONS
+// ==========================================
+
+function getMLExplanation(q) {
+    const text = q.question.toLowerCase();
+
+    if (text.includes("precision") && text.includes("recall")) {
+        return "Precision measures how many predicted positive samples are actually positive, while Recall measures how many actual positive samples were correctly detected. Increasing one may reduce the other, creating the Precision-Recall trade-off.";
+    }
+
+    if (text.includes("precision")) {
+        return "Precision = TP / (TP + FP). It measures the proportion of positive predictions that are actually correct.";
+    }
+
+    if (text.includes("recall") || text.includes("sensitivity") || text.includes("tpr")) {
+        return "Recall (True Positive Rate) = TP / (TP + FN). It measures the proportion of actual positive samples correctly identified.";
+    }
+
+    if (text.includes("f1") || text.includes("f-measure") || text.includes("harmonic mean")) {
+        return "The F1-score is the harmonic mean of Precision and Recall. It balances both metrics and becomes high only when both are high.";
+    }
+
+    if (text.includes("confusion matrix")) {
+        return "A Confusion Matrix evaluates a classification model by comparing actual and predicted classes. Its main values are True Positive, True Negative, False Positive, and False Negative.";
+    }
+
+    if (text.includes("specificity") || text.includes("tnr")) {
+        return "Specificity (True Negative Rate) = TN / (TN + FP). It measures the proportion of actual negative samples correctly classified.";
+    }
+
+    if (text.includes("mcc") || text.includes("matthews correlation")) {
+        return "Matthews Correlation Coefficient measures the correlation between observed and predicted classifications. Its values range from -1 to +1.";
+    }
+
+    if (text.includes("youden")) {
+        return "Youden's Index = TPR + TNR - 1. It evaluates the discriminative power of a classification test.";
+    }
+
+    if (text.includes("roc") || text.includes("auc")) {
+        return "The ROC curve plots True Positive Rate against False Positive Rate at different thresholds. AUC equals 1 for a perfect classifier and 0.5 for a random classifier.";
+    }
+
+    if (text.includes("error rate") || text.includes("misclassified")) {
+        return "Error Rate represents the proportion of incorrectly classified samples. It equals 1 minus Accuracy.";
+    }
+
+    if (text.includes("accuracy") || text.includes("acc")) {
+        return "Accuracy = (TP + TN) / (TP + TN + FP + FN). It measures the proportion of all samples classified correctly.";
+    }
+
+    if (text.includes("threshold") || text.includes("decision function")) {
+        return "A decision function calculates a score for an instance. The classifier compares this score with a threshold to decide whether the instance belongs to the positive or negative class.";
+    }
+
+    if (text.includes("cross val score")) {
+        return "cross_val_score() performs K-fold cross-validation and returns evaluation scores for each fold.";
+    }
+
+    if (text.includes("cross val predict")) {
+        return "cross_val_predict() performs K-fold cross-validation and returns predictions for each sample when it is used as part of a test fold.";
+    }
+
+    if (text.includes("stratifiedkfold")) {
+        return "StratifiedKFold creates folds that preserve approximately the same class proportions as the original dataset. This is especially useful for classification.";
+    }
+
+    if (text.includes("k-fold") || text.includes("k fold")) {
+        return "K-fold cross-validation divides the training data into K folds. The model is trained K times, using a different fold for validation each time.";
+    }
+
+    if (text.includes("mnist") || text.includes("minist") || text.includes("mimist")) {
+        return "MNIST is a dataset containing 70,000 grayscale images of handwritten digits. Each image is 28 × 28 pixels, giving 784 features. It has 60,000 training images and 10,000 test images.";
+    }
+
+    if (text.includes("ovo") || text.includes("one-versus-one")) {
+        return "One-versus-One trains a separate binary classifier for every pair of classes. For N classes, the number of classifiers is N × (N - 1) / 2.";
+    }
+
+    if (text.includes("sgd")) {
+        return "SGD stands for Stochastic Gradient Descent. It updates model parameters using individual training instances and is suitable for online learning.";
+    }
+
+    if (text.includes("random forest")) {
+        return "Random Forest is an ensemble learning algorithm that combines multiple Decision Trees. It can provide class probabilities using predict_proba().";
+    }
+
+    if (text.includes("binary classification") || text.includes("multiclass")) {
+        return "Binary classification predicts between two classes, while multiclass classification handles three or more classes.";
+    }
+
+    if (text.includes("regression") || text.includes("rmse") || text.includes("mae")) {
+        return "Regression predicts numerical values. RMSE measures prediction error using the Euclidean (L2) norm, while MAE uses the Manhattan (L1) norm.";
+    }
+
+    if (text.includes("correlation coefficient") || text.includes("correlation")) {
+        return "The correlation coefficient ranges from -1 to +1. Values near +1 indicate strong positive linear correlation, values near -1 indicate strong negative correlation, and values near 0 indicate little or no linear correlation.";
+    }
+
+    if (text.includes("min-max") || text.includes("minmaxscaler")) {
+        return "Min-Max Scaling shifts and rescales numerical values to a specified range, commonly between 0 and 1. Scikit-Learn provides MinMaxScaler for this purpose.";
+    }
+
+    if (text.includes("standardization") || text.includes("standardscaler")) {
+        return "Standardization transforms values using the mean and standard deviation. StandardScaler performs this transformation. Unlike Min-Max Scaling, it does not restrict values to a fixed range.";
+    }
+
+    if (text.includes("onehotencoder") || text.includes("one-hot")) {
+        return "OneHotEncoder converts categorical values into binary one-hot vectors, allowing machine learning algorithms to work with categorical data.";
+    }
+
+    if (text.includes("ordinal encoder") || text.includes("ordinalencoder")) {
+        return "OrdinalEncoder converts categorical text values into numerical integer values.";
+    }
+
+    if (text.includes("simpleimputer") || text.includes("missing values")) {
+        return "SimpleImputer handles missing values by replacing them with a chosen strategy, such as the mean, median, or most frequent value.";
+    }
+
+    if (text.includes("pipeline")) {
+        return "A Pipeline is a sequence of data processing and modeling steps. It helps organize operations and apply them consistently.";
+    }
+
+    if (text.includes("randomized search")) {
+        return "RandomizedSearchCV evaluates a specified number of randomly selected hyperparameter combinations using cross-validation.";
+    }
+
+    if (text.includes("grid search")) {
+        return "GridSearchCV evaluates all specified combinations of hyperparameter values using cross-validation to find a suitable configuration.";
+    }
+
+    if (text.includes("describe()")) {
+        return "The describe() method provides descriptive statistics for numerical columns, including count, mean, standard deviation, minimum, and maximum.";
+    }
+
+    if (text.includes("info()")) {
+        return "The info() method provides information about a dataset, including column names, data types, and non-null values.";
+    }
+
+    if (text.includes("corr()")) {
+        return "The corr() method calculates pairwise correlations between numerical columns in a DataFrame.";
+    }
+
+    if (text.includes("online learning") || text.includes("mini-batches")) {
+        return "Online learning updates a model continuously as new data arrives. It is useful when data arrives over time or when the dataset is too large to process all at once.";
+    }
+
+    if (text.includes("learning rate")) {
+        return "The learning rate controls how quickly an online learning model adapts to new data. A high learning rate adapts faster but may forget older patterns.";
+    }
+
+    if (text.includes("supervised learning") || text.includes("teacher") || text.includes("labeled")) {
+        return "Supervised Learning trains a model using labeled examples, where each input has a known desired output.";
+    }
+
+    if (text.includes("unsupervised learning") || text.includes("unlabeled")) {
+        return "Unsupervised Learning works with unlabeled data to discover hidden patterns, structures, or groups.";
+    }
+
+    if (text.includes("semi-supervised")) {
+        return "Semi-Supervised Learning uses a small amount of labeled data together with a larger amount of unlabeled data.";
+    }
+
+    if (text.includes("reinforcement learning") || text.includes("reward") || text.includes("policy")) {
+        return "Reinforcement Learning involves an agent interacting with an environment, taking actions, and receiving rewards or penalties. The agent learns a policy to maximize long-term rewards.";
+    }
+
+    if (text.includes("k-means") || text.includes("dbscan") || text.includes("clustering")) {
+        return "Clustering is an unsupervised learning task that groups similar data points. K-Means, DBSCAN, and Hierarchical Clustering are common algorithms.";
+    }
+
+    if (text.includes("pca") || text.includes("dimensionality reduction")) {
+        return "Dimensionality Reduction simplifies data by reducing the number of features while trying to preserve important information. PCA is a common technique.";
+    }
+
+    if (text.includes("overfitting")) {
+        return "Overfitting happens when a model learns the training data too closely, including noise, and performs poorly on unseen data. Solutions include simplifying the model, gathering more data, and reducing noise.";
+    }
+
+    if (text.includes("underfitting")) {
+        return "Underfitting occurs when a model is too simple to learn the underlying patterns in the data. Possible solutions include using a more powerful model and improving the input features.";
+    }
+
+    if (text.includes("regularization")) {
+        return "Regularization constrains a model to reduce complexity and help prevent overfitting. It is commonly controlled through a regularization hyperparameter.";
+    }
+
+    if (text.includes("training set") || text.includes("training instance") || text.includes("training sample")) {
+        return "Training instances or training samples are the examples used by a machine learning algorithm to learn patterns and fit its model.";
+    }
+
+    if (text.includes("feature engineering") || text.includes("feature selection") || text.includes("feature extraction")) {
+        return "Feature Engineering prepares useful input features for a model. It can include feature selection, feature extraction, and creating new features.";
+    }
+
+    if (text.includes("data mining")) {
+        return "Data Mining applies techniques to large datasets to discover useful patterns, relationships, and previously hidden information.";
+    }
+
+    if (text.includes("ensemble learning") || text.includes("random forests")) {
+        return "Ensemble Learning combines predictions from multiple models to improve overall performance compared with relying on a single model.";
+    }
+
+    if (text.includes("spam")) {
+        return "Machine Learning spam filters learn patterns from examples of spam and legitimate messages, allowing them to adapt when new spam patterns appear.";
+    }
+
+    if (text.includes("classification")) {
+        return "Classification is a supervised learning task in which a model assigns input examples to predefined categories or classes.";
+    }
+
+    if (text.includes("utility function") || text.includes("cost function")) {
+        return "A cost function measures how bad a model's predictions are, while a utility function can measure how beneficial its results are. The training process aims to optimize the chosen objective.";
+    }
+
+    if (text.includes("traditional approach")) {
+        return "The Traditional Approach relies on manually written rules. It can become difficult to maintain when problems are complex or rules change frequently.";
+    }
+
+    if (text.includes("machine learning")) {
+        return "Machine Learning is a field of Artificial Intelligence that enables computers to learn patterns from data and improve their performance without being explicitly programmed for every task.";
+    }
+
+    return "The correct answer is: " + q.options[q.answer] +
+        ". Review this concept in your lecture to understand why this option is correct.";
+}
+
+
+// Add explanations to all Doctor Quiz questions
+mlSubject.lectures.forEach(lecture => {
+
+    if (lecture.doctorQuizzes) {
+        lecture.doctorQuizzes.forEach(quiz => {
+            quiz.questions.forEach(question => {
+                question.explanation = getMLExplanation(question);
+            });
+        });
+    }
+
+});
+
+// عرض نفس كويز الدكتورة في المحاضرات الأربعة
+mlSubject.lectures[1].doctorQuizzes =
+    mlSubject.lectures[0].doctorQuizzes;
+
+mlSubject.lectures[2].doctorQuizzes =
+    mlSubject.lectures[0].doctorQuizzes;
+
+mlSubject.lectures[3].doctorQuizzes =
+    mlSubject.lectures[0].doctorQuizzes;
+
+})();
+
+// LECTURE 2
+ml.lectures[1].code = `
+<h3>1. Split Dataset</h3>
+
+<pre><code class="language-python">
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+</code></pre>
+
+<h3>2. Calculate Correlation</h3>
+
+<pre><code class="language-python">
+corr_matrix = data.corr()
+
+print(corr_matrix)
+
+corr_matrix["target"].sort_values(
+    ascending=False
+)
+</code></pre>
+
+<h3>3. Handle Missing Values</h3>
+
+<pre><code class="language-python">
+from sklearn.impute import SimpleImputer
+
+imputer = SimpleImputer(strategy="median")
+
+X = imputer.fit_transform(data)
+</code></pre>
+
+<h3>4. Feature Scaling</h3>
+
+<pre><code class="language-python">
+from sklearn.preprocessing import StandardScaler
+
+scaler = StandardScaler()
+
+X_scaled = scaler.fit_transform(X)
+</code></pre>
+
+<h3>5. Evaluate Model Using RMSE</h3>
+
+<pre><code class="language-python">
+from sklearn.metrics import mean_squared_error
+import numpy as np
+
+rmse = np.sqrt(
+    mean_squared_error(y_test, predictions)
+)
+
+print(rmse)
+</code></pre>
+
+<h3>6. Grid Search</h3>
+
+<pre><code class="language-python">
+from sklearn.model_selection import GridSearchCV
+
+grid_search = GridSearchCV(
+    model,
+    param_grid,
+    cv=5
+)
+
+grid_search.fit(X_train, y_train)
+
+print(grid_search.best_params_)
+</code></pre>
+
+<h3>7. Randomized Search</h3>
+
+<pre><code class="language-python">
+from sklearn.model_selection import RandomizedSearchCV
+
+random_search = RandomizedSearchCV(
+    model,
+    param_distributions,
+    n_iter=10,
+    cv=5
+)
+
+random_search.fit(X_train, y_train)
+</code></pre>
+`;
+
+ml.lectures[1].quiz = [
+{
+    question: "What is the first step in an ML project?",
+    options: [
+        "Deploy the model",
+        "Look at the big picture",
+        "Delete the dataset",
+        "Calculate RMSE"
+    ],
+    answer: 1,
+    explanation: "The first step is to look at the big picture. This means understanding the problem, defining the objective, and identifying what the project needs to achieve before building a model."
+},
+{
+    question: "What does dropna() do?",
+    options: [
+        "Remove missing values",
+        "Add new columns",
+        "Sort data",
+        "Train a model"
+    ],
+    answer: 0,
+    explanation: "In Pandas, dropna() removes rows or columns containing missing values (NaN). It helps clean the dataset before training a machine learning model."
+},
+{
+    question: "What is the purpose of StandardScaler()?",
+    options: [
+        "Remove duplicates",
+        "Scale features",
+        "Split the dataset",
+        "Calculate correlation"
+    ],
+    answer: 1,
+    explanation: "StandardScaler transforms numerical features so they have approximately zero mean and unit variance. This helps algorithms that are sensitive to feature scales."
+},
+{
+    question: "What does RMSE measure?",
+    options: [
+        "Classification accuracy",
+        "Regression prediction error",
+        "Number of features",
+        "Training time"
+    ],
+    answer: 1,
+    explanation: "RMSE (Root Mean Squared Error) measures the typical size of prediction errors in regression. It gives larger errors more weight because the errors are squared before averaging."
+},
+{
+    question: "Which method searches a specified parameter grid?",
+    options: [
+        "GridSearchCV",
+        "train_test_split",
+        "dropna",
+        "corr"
+    ],
+    answer: 0,
+    explanation: "GridSearchCV tests all specified combinations of hyperparameter values using cross-validation to find a suitable configuration for the model."
+}
+];
+// LECTURE 3
+ml.lectures[2].code = `
+<h3>1. Load MNIST Dataset</h3>
+
+<pre><code class="language-python">
+from sklearn.datasets import fetch_openml
+
+mnist = fetch_openml(
+    "mnist_784",
+    version=1,
+    as_frame=False
+)
+
+X, y = mnist.data, mnist.target
+</code></pre>
+
+<h3>2. Binary Classification</h3>
+
+<pre><code class="language-python">
+from sklearn.linear_model import SGDClassifier
+
+y_train_5 = (y_train == "5")
+
+sgd_clf = SGDClassifier(random_state=42)
+
+sgd_clf.fit(X_train, y_train_5)
+
+prediction = sgd_clf.predict([some_digit])
+</code></pre>
+
+<h3>3. Confusion Matrix</h3>
+
+<pre><code class="language-python">
+from sklearn.metrics import confusion_matrix
+
+cm = confusion_matrix(y_true, y_pred)
+
+print(cm)
+</code></pre>
+
+<h3>4. Precision and Recall</h3>
+
+<pre><code class="language-python">
+from sklearn.metrics import precision_score
+from sklearn.metrics import recall_score
+from sklearn.metrics import f1_score
+
+precision = precision_score(y_true, y_pred)
+
+recall = recall_score(y_true, y_pred)
+
+f1 = f1_score(y_true, y_pred)
+</code></pre>
+
+<h3>5. ROC Curve and AUC</h3>
+
+<pre><code class="language-python">
+from sklearn.metrics import roc_curve
+from sklearn.metrics import roc_auc_score
+
+fpr, tpr, thresholds = roc_curve(
+    y_true, y_scores
+)
+
+auc = roc_auc_score(y_true, y_scores)
+</code></pre>
+`;
+
+ml.lectures[2].quiz = [
+{
+    question: "What is the MNIST dataset used for?",
+    options: [
+        "Weather prediction",
+        "Handwritten digit classification",
+        "Audio processing",
+        "Text translation"
+    ],
+    answer: 1,
+    explanation: "The MNIST dataset is commonly used to train and test machine learning models that recognize handwritten digits from 0 to 9. Each image represents a handwritten digit."
+},
+{
+    question: "How many classes are in the MNIST digit dataset?",
+    options: [
+        "2",
+        "5",
+        "10",
+        "100"
+    ],
+    answer: 2,
+    explanation: "MNIST contains 10 classes, representing the digits from 0 to 9. Each digit is treated as a separate classification class."
+},
+{
+    question: "What does a True Positive represent?",
+    options: [
+        "A negative example predicted as negative",
+        "A positive example predicted as positive",
+        "A negative example predicted as positive",
+        "A positive example predicted as negative"
+    ],
+    answer: 1,
+    explanation: "A True Positive (TP) occurs when the actual class is positive and the model correctly predicts it as positive. For example, a model correctly identifies an image containing a handwritten digit as belonging to a particular class."
+},
+{
+    question: "Precision is calculated as:",
+    options: [
+        "TP / (TP + FP)",
+        "TP / (TP + FN)",
+        "TN / (TN + FP)",
+        "FP / (TP + FP)"
+    ],
+    answer: 0,
+    explanation: "Precision measures how many of the samples predicted as positive are actually positive. It is calculated by dividing True Positives by the sum of True Positives and False Positives."
+},
+{
+    question: "What does ROC stand for?",
+    options: [
+        "Rate Of Classification",
+        "Receiver Operating Characteristic",
+        "Random Output Calculation",
+        "Regression Of Classes"
+    ],
+    answer: 1,
+    explanation: "ROC stands for Receiver Operating Characteristic. The ROC curve evaluates a classification model at different decision thresholds by plotting the True Positive Rate against the False Positive Rate."
+}
+];
+// LECTURE 4
+ml.lectures[3].code = `
+<h3>1. Linear Regression</h3>
+
+<pre><code class="language-python">
+from sklearn.linear_model import LinearRegression
+
+lin_reg = LinearRegression()
+
+lin_reg.fit(X_train, y_train)
+
+predictions = lin_reg.predict(X_test)
+</code></pre>
+
+<h3>2. Normal Equation</h3>
+
+<pre><code class="language-python">
+import numpy as np
+
+theta_best = np.linalg.inv(
+    X_b.T.dot(X_b)
+).dot(X_b.T).dot(y)
+</code></pre>
+
+<h3>3. Gradient Descent</h3>
+
+<pre><code class="language-python">
+eta = 0.1
+n_iterations = 1000
+m = 100
+
+theta = np.random.randn(2, 1)
+
+for iteration in range(n_iterations):
+
+    gradients = 2/m * X_b.T.dot(
+        X_b.dot(theta) - y
+    )
+
+    theta = theta - eta * gradients
+</code></pre>
+
+<h3>4. Stochastic Gradient Descent</h3>
+
+<pre><code class="language-python">
+from sklearn.linear_model import SGDRegressor
+
+sgd_reg = SGDRegressor(
+    max_iter=1000,
+    tol=1e-3,
+    eta0=0.1
+)
+
+sgd_reg.fit(X_train, y_train)
+</code></pre>
+
+<h3>5. Mini-Batch Gradient Descent</h3>
+
+<pre><code class="language-python">
+for iteration in range(n_iterations):
+
+    for batch in batches:
+
+        gradients = calculate_gradients(batch)
+
+        theta = theta - eta * gradients
+</code></pre>
+`;
+
+ml.lectures[3].quiz = [
+{
+    question: "What is Linear Regression used for?",
+    options: [
+        "Predicting numerical values",
+        "Grouping unlabeled data",
+        "Image classification only",
+        "Sorting data"
+    ],
+    answer: 0,
+    explanation: "Linear Regression is a supervised machine learning algorithm used to predict continuous numerical values, such as house prices, salaries, or temperatures."
+},
+{
+    question: "What is the Normal Equation used to calculate?",
+    options: [
+        "Accuracy",
+        "Model parameters",
+        "Missing values",
+        "Number of classes"
+    ],
+    answer: 1,
+    explanation: "The Normal Equation calculates the optimal model parameters (weights) for Linear Regression directly by minimizing the sum of squared errors, without using iterative Gradient Descent."
+},
+{
+    question: "What is Gradient Descent?",
+    options: [
+        "An optimization algorithm",
+        "A data visualization library",
+        "A classification dataset",
+        "A file format"
+    ],
+    answer: 0,
+    explanation: "Gradient Descent is an optimization algorithm that repeatedly updates model parameters in the direction that reduces the cost function until it finds a minimum or a suitable solution."
+},
+{
+    question: "Which Gradient Descent method uses the entire training dataset for each update?",
+    options: [
+        "Stochastic Gradient Descent",
+        "Mini-batch Gradient Descent",
+        "Batch Gradient Descent",
+        "Random Search"
+    ],
+    answer: 2,
+    explanation: "Batch Gradient Descent calculates the gradient using the entire training dataset before each parameter update. It gives a stable update but can be slow with large datasets."
+},
+{
+    question: "What does the learning rate control?",
+    options: [
+        "The number of features",
+        "The size of parameter updates",
+        "The dataset format",
+        "The number of classes"
+    ],
+    answer: 1,
+    explanation: "The learning rate controls how large each parameter update is during Gradient Descent. A very high learning rate may cause the algorithm to overshoot the minimum, while a very low rate makes learning slow."
+}
+];
+console.log("Machine Learning codes and quizzes loaded!");
+// =====================================
+// MACHINE LEARNING FLASHCARDS
+// =====================================
+
+const mlSubject = SUBJECTS.find(
+    subject => subject.name === "Machine Learning"
+);
+
+// LECTURE 1
+mlSubject.lectures[0].flashcards = [
+
+    {
+        question: "What is Machine Learning?",
+        answer: "A field of AI that enables computers to learn patterns from data."
+    },
+    {
+        question: "What is Supervised Learning?",
+        answer: "Learning from labeled training data."
+    },
+    {
+        question: "What is Unsupervised Learning?",
+        answer: "Discovering patterns in unlabeled data."
+    },
+    {
+        question: "What is Reinforcement Learning?",
+        answer: "Learning through rewards and penalties."
+    },
+    {
+        question: "What is Classification?",
+        answer: "Predicting a category or class."
+    },
+    {
+        question: "What is Regression?",
+        answer: "Predicting a continuous numerical value."
+    },
+    {
+        question: "What is a Training Set?",
+        answer: "The data used to train a machine learning model."
+    },
+    {
+        question: "What is a Test Set?",
+        answer: "Data used to evaluate the trained model."
+    },
+    {
+        question: "What is Overfitting?",
+        answer: "When a model learns training data too closely and performs poorly on new data."
+    },
+    {
+        question: "What is Underfitting?",
+        answer: "When a model is too simple to capture the patterns in the data."
+    }
+];
+
+
+// LECTURE 2
+mlSubject.lectures[1].flashcards = [
+
+    {
+        question: "What is the first step in an ML project?",
+        answer: "Look at the big picture."
+    },
+    {
+        question: "What is Data Exploration?",
+        answer: "Understanding the dataset using statistics and visualization."
+    },
+    {
+        question: "What does head() do?",
+        answer: "Displays the first rows of a DataFrame."
+    },
+    {
+        question: "What does info() do?",
+        answer: "Displays information about columns, data types and missing values."
+    },
+    {
+        question: "What does describe() do?",
+        answer: "Generates descriptive statistical summaries."
+    },
+    {
+        question: "What does corr() calculate?",
+        answer: "Correlation between numerical features."
+    },
+    {
+        question: "What does dropna() do?",
+        answer: "Removes rows or columns containing missing values."
+    },
+    {
+        question: "What is Feature Scaling?",
+        answer: "Transforming features to comparable numerical scales."
+    },
+    {
+        question: "What is RMSE?",
+        answer: "Root Mean Squared Error, a regression evaluation metric."
+    },
+    {
+        question: "What is Cross Validation?",
+        answer: "Evaluating a model using different subsets of training data."
+    },
+    {
+        question: "What is GridSearchCV?",
+        answer: "A method that tests specified hyperparameter combinations."
+    },
+    {
+        question: "What is RandomizedSearchCV?",
+        answer: "A method that tests a selected number of parameter combinations."
+    }
+];
+
+
+// LECTURE 3
+mlSubject.lectures[2].flashcards = [
+
+    {
+        question: "What is MNIST?",
+        answer: "A dataset of handwritten digits from 0 to 9."
+    },
+    {
+        question: "What is Binary Classification?",
+        answer: "Classification into one of two possible classes."
+    },
+    {
+        question: "What is a Confusion Matrix?",
+        answer: "A table comparing actual and predicted class labels."
+    },
+    {
+        question: "What is True Positive (TP)?",
+        answer: "A positive example correctly predicted as positive."
+    },
+    {
+        question: "What is True Negative (TN)?",
+        answer: "A negative example correctly predicted as negative."
+    },
+    {
+        question: "What is False Positive (FP)?",
+        answer: "A negative example incorrectly predicted as positive."
+    },
+    {
+        question: "What is False Negative (FN)?",
+        answer: "A positive example incorrectly predicted as negative."
+    },
+    {
+        question: "What is Precision?",
+        answer: "TP / (TP + FP)."
+    },
+    {
+        question: "What is Recall?",
+        answer: "TP / (TP + FN)."
+    },
+    {
+        question: "What is F1 Score?",
+        answer: "The harmonic mean of precision and recall."
+    },
+    {
+        question: "What is ROC?",
+        answer: "Receiver Operating Characteristic curve."
+    },
+    {
+        question: "What is AUC?",
+        answer: "Area Under the ROC Curve."
+    },
+    {
+        question: "What is Multiclass Classification?",
+        answer: "Classification involving more than two classes."
+    },
+    {
+        question: "What is Multilabel Classification?",
+        answer: "A sample can have multiple labels."
+    }
+];
+
+
+// LECTURE 4
+mlSubject.lectures[3].flashcards = [
+
+    {
+        question: "What is Linear Regression?",
+        answer: "A model used to predict numerical values using a linear relationship."
+    },
+    {
+        question: "What is the Normal Equation?",
+        answer: "An analytical method for calculating Linear Regression parameters."
+    },
+    {
+        question: "What is SVD?",
+        answer: "Singular Value Decomposition, a matrix factorization technique."
+    },
+    {
+        question: "What is Gradient Descent?",
+        answer: "An optimization algorithm that minimizes a cost function."
+    },
+    {
+        question: "What is the Learning Rate?",
+        answer: "A parameter controlling the size of each update."
+    },
+    {
+        question: "What is Batch Gradient Descent?",
+        answer: "Gradient Descent that uses the entire training set for each update."
+    },
+    {
+        question: "What is Stochastic Gradient Descent?",
+        answer: "Gradient Descent that uses one training example per update."
+    },
+    {
+        question: "What is Mini-Batch Gradient Descent?",
+        answer: "Gradient Descent that uses a small batch of training examples."
+    },
+    {
+        question: "What is a Cost Function?",
+        answer: "A function that measures prediction error."
+    },
+    {
+        question: "What happens if the learning rate is too high?",
+        answer: "Updates may overshoot the minimum and prevent convergence."
+    },
+    {
+        question: "What is the purpose of Linear Regression?",
+        answer: "Predicting continuous numerical outputs."
+    },
+    {
+        question: "What is a Model Parameter?",
+        answer: "A value learned during training, such as a weight or bias."
+    }
+];
+
+console.log("Machine Learning flashcards loaded!");
+
+
+// ==========================================
+// DIGITAL LOGIC DESIGN - CHAPTER 1
+// ==========================================
+
+// ======================================================
+// DIGITAL LOGIC DESIGN - ALL CHAPTERS
+// ======================================================
+
+(() => {
+
+    const subject = SUBJECTS.find(
+        s => s.name.trim() === "Digital Logic Design"
+    );
+
+    if (!subject || !subject.lectures || subject.lectures.length < 3) {
+        console.error("Digital Logic Design or its lectures were not found.");
+        return;
+    }
+
+    // ==================================================
+    // CHAPTER 1
+    // Digital Systems and Binary Numbers
+    // ==================================================
+
+    const ch1 = subject.lectures[0];
+
+    ch1.summary = `
+    <h2>Chapter 1: Digital Systems and Binary Numbers</h2>
+
+    <h3>1.1 Digital Systems</h3>
+    <p>A digital system processes information using discrete values,
+    usually represented by binary digits (0 and 1).</p>
+
+    <ul>
+        <li><b>Analog System:</b> Uses continuous signals.</li>
+        <li><b>Digital System:</b> Uses discrete values.</li>
+        <li><b>Binary Digit (Bit):</b> The smallest unit of digital information.</li>
+        <li><b>Byte:</b> A group of 8 bits.</li>
+    </ul>
+
+    <h3>1.2 Number Systems</h3>
+    <table>
+        <tr><th>System</th><th>Base</th><th>Digits</th></tr>
+        <tr><td>Binary</td><td>2</td><td>0, 1</td></tr>
+        <tr><td>Octal</td><td>8</td><td>0 to 7</td></tr>
+        <tr><td>Decimal</td><td>10</td><td>0 to 9</td></tr>
+        <tr><td>Hexadecimal</td><td>16</td><td>0 to 9, A to F</td></tr>
+    </table>
+
+    <h3>1.3 Decimal to Binary</h3>
+    <p>Divide the decimal number by 2 repeatedly.
+    Write the remainders from bottom to top.</p>
+
+    <p><b>Example:</b> Convert 13 to binary.</p>
+    <pre>
+13 ÷ 2 = 6 remainder 1
+6 ÷ 2 = 3 remainder 0
+3 ÷ 2 = 1 remainder 1
+1 ÷ 2 = 0 remainder 1
+
+Answer = 1101
+    </pre>
+
+    <h3>1.4 Binary to Decimal</h3>
+    <p>Multiply each binary digit by its corresponding power of 2.</p>
+
+    <p><b>Example:</b></p>
+    <pre>
+(1011)₂
+
+= 1×2³ + 0×2² + 1×2¹ + 1×2⁰
+= 8 + 0 + 2 + 1
+= 11
+    </pre>
+
+    <h3>1.5 Octal and Hexadecimal</h3>
+    <ul>
+        <li>Binary to Octal: Group bits into groups of 3.</li>
+        <li>Binary to Hexadecimal: Group bits into groups of 4.</li>
+        <li>Octal to Binary: Replace each digit with 3 bits.</li>
+        <li>Hexadecimal to Binary: Replace each digit with 4 bits.</li>
+    </ul>
+
+    <h3>1.6 Binary Arithmetic</h3>
+    <p><b>Binary Addition Rules:</b></p>
+    <table>
+        <tr><th>Operation</th><th>Result</th></tr>
+        <tr><td>0 + 0</td><td>0</td></tr>
+        <tr><td>0 + 1</td><td>1</td></tr>
+        <tr><td>1 + 0</td><td>1</td></tr>
+        <tr><td>1 + 1</td><td>10</td></tr>
+    </table>
+
+    <h3>1.7 Complements</h3>
+    <ul>
+        <li><b>1's Complement:</b> Change every 0 to 1 and every 1 to 0.</li>
+        <li><b>2's Complement:</b> Add 1 to the 1's complement.</li>
+    </ul>
+
+    <p><b>Example:</b> Find the 2's complement of 0101.</p>
+    <pre>
+1's complement = 1010
+Add 1          = 1011
+    </pre>
+    `;
+
+    ch1.code = `
+    <h2>Important Rules & Formulas</h2>
+
+    <h3>Number System Bases</h3>
+    <pre>
+Binary       = Base 2
+Octal        = Base 8
+Decimal      = Base 10
+Hexadecimal  = Base 16
+    </pre>
+
+    <h3>Binary to Decimal</h3>
+    <pre>
+Binary number = Σ (bit × 2^position)
+    </pre>
+
+    <h3>Grouping</h3>
+    <pre>
+Binary → Octal        : Groups of 3 bits
+Binary → Hexadecimal  : Groups of 4 bits
+    </pre>
+
+    <h3>Complements</h3>
+    <pre>
+1's Complement = Invert all bits
+
+2's Complement =
+1's Complement + 1
+    </pre>
+
+    <h3>Binary Addition</h3>
+    <pre>
+0 + 0 = 0
+0 + 1 = 1
+1 + 0 = 1
+1 + 1 = 10
+    </pre>
+    `;
+
+    ch1.quiz = [
+        {
+            question: "What is the base of the binary number system?",
+            options: ["2", "8", "10", "16"],
+            answer: 0,
+            explanation: "Binary uses only two digits: 0 and 1."
+        },
+        {
+            question: "How many bits are in one byte?",
+            options: ["4", "8", "16", "32"],
+            answer: 1,
+            explanation: "One byte consists of 8 bits."
+        },
+        {
+            question: "What is the decimal equivalent of (1011)₂?",
+            options: ["9", "10", "11", "12"],
+            answer: 2,
+            explanation: "8 + 0 + 2 + 1 = 11."
+        },
+        {
+            question: "What is the binary equivalent of decimal 10?",
+            options: ["1010", "1100", "1001", "1110"],
+            answer: 0,
+            explanation: "10 = 8 + 2, so the binary value is 1010."
+        },
+        {
+            question: "What is the base of the hexadecimal system?",
+            options: ["2", "8", "10", "16"],
+            answer: 3,
+            explanation: "Hexadecimal has base 16."
+        },
+        {
+            question: "How many bits are grouped together to convert binary to octal?",
+            options: ["2", "3", "4", "8"],
+            answer: 1,
+            explanation: "Each octal digit represents 3 binary bits."
+        },
+        {
+            question: "How many bits represent one hexadecimal digit?",
+            options: ["2", "3", "4", "8"],
+            answer: 2,
+            explanation: "Each hexadecimal digit represents 4 bits."
+        },
+        {
+            question: "What is the 1's complement of 1010?",
+            options: ["0101", "1011", "0110", "1101"],
+            answer: 0,
+            explanation: "Invert every bit."
+        },
+        {
+            question: "How do we calculate 2's complement?",
+            options: [
+                "Add 1 to the original number",
+                "Invert bits only",
+                "Invert bits and add 1",
+                "Multiply by 2"
+            ],
+            answer: 2,
+            explanation: "2's complement is obtained by inverting all bits and adding 1."
+        },
+        {
+            question: "What is the result of 1 + 1 in binary?",
+            options: ["0", "1", "10", "11"],
+            answer: 2,
+            explanation: "Binary 1 + 1 equals 10."
+        }
+    ];
+
+    ch1.flashcards = [
+        {
+            question: "What is a bit?",
+            answer: "The smallest unit of digital information."
+        },
+        {
+            question: "What is a byte?",
+            answer: "A group of 8 bits."
+        },
+        {
+            question: "What is the binary base?",
+            answer: "Base 2."
+        },
+        {
+            question: "What is the octal base?",
+            answer: "Base 8."
+        },
+        {
+            question: "What is the decimal base?",
+            answer: "Base 10."
+        },
+        {
+            question: "What is the hexadecimal base?",
+            answer: "Base 16."
+        },
+        {
+            question: "How do you convert binary to octal?",
+            answer: "Group binary digits into groups of 3."
+        },
+        {
+            question: "How do you convert binary to hexadecimal?",
+            answer: "Group binary digits into groups of 4."
+        },
+        {
+            question: "What is 1's complement?",
+            answer: "Inverting every bit."
+        },
+        {
+            question: "What is 2's complement?",
+            answer: "1's complement plus 1."
+        }
+    ];
+
+    // Preserve any doctor quizzes already added.
+    ch1.doctorQuizzes = ch1.doctorQuizzes || [];
+
+
+    // ==================================================
+    // CHAPTER 2
+    // Boolean Algebra and Logic Gates
+    // ==================================================
+
+    const ch2 = subject.lectures[1];
+
+    ch2.summary = `
+    <h2>Chapter 2: Boolean Algebra and Logic Gates</h2>
+
+    <h3>2.1 Introduction</h3>
+    <p>Boolean Algebra is a mathematical system used to describe
+    and simplify digital logic circuits.</p>
+
+    <p>It uses two values:</p>
+    <ul>
+        <li>0 = False</li>
+        <li>1 = True</li>
+    </ul>
+
+    <h3>2.2 Basic Logic Operations</h3>
+
+    <h4>AND Gate</h4>
+    <p>The output is 1 only when all inputs are 1.</p>
+    <pre>
+Y = A · B
+    </pre>
+
+    <h4>OR Gate</h4>
+    <p>The output is 1 when at least one input is 1.</p>
+    <pre>
+Y = A + B
+    </pre>
+
+    <h4>NOT Gate</h4>
+    <p>The output is the opposite of the input.</p>
+    <pre>
+Y = A'
+    </pre>
+
+    <h3>2.3 Derived Logic Gates</h3>
+
+    <h4>NAND Gate</h4>
+    <pre>
+Y = (A · B)'
+    </pre>
+    <p>It is the opposite of AND.</p>
+
+    <h4>NOR Gate</h4>
+    <pre>
+Y = (A + B)'
+    </pre>
+    <p>It is the opposite of OR.</p>
+
+    <h4>XOR Gate</h4>
+    <pre>
+Y = A ⊕ B
+    </pre>
+    <p>Output is 1 when inputs are different.</p>
+
+    <h4>XNOR Gate</h4>
+    <pre>
+Y = (A ⊕ B)'
+    </pre>
+    <p>Output is 1 when inputs are equal.</p>
+
+    <h3>2.4 Important Boolean Laws</h3>
+
+    <table>
+        <tr><th>Law</th><th>Expression</th></tr>
+        <tr><td>Identity</td><td>A + 0 = A</td></tr>
+        <tr><td>Identity</td><td>A · 1 = A</td></tr>
+        <tr><td>Null</td><td>A + 1 = 1</td></tr>
+        <tr><td>Null</td><td>A · 0 = 0</td></tr>
+        <tr><td>Idempotent</td><td>A + A = A</td></tr>
+        <tr><td>Idempotent</td><td>A · A = A</td></tr>
+        <tr><td>Complement</td><td>A + A' = 1</td></tr>
+        <tr><td>Complement</td><td>A · A' = 0</td></tr>
+        <tr><td>Involution</td><td>(A')' = A</td></tr>
+    </table>
+
+    <h3>2.5 De Morgan's Theorems</h3>
+    <pre>
+(A · B)' = A' + B'
+
+(A + B)' = A' · B'
+    </pre>
+
+    <h3>2.6 Truth Tables</h3>
+    <p>Truth tables show the output for every possible input combination.</p>
+
+    <table>
+        <tr><th>A</th><th>B</th><th>AND</th><th>OR</th><th>XOR</th></tr>
+        <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td></tr>
+        <tr><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
+        <tr><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td></tr>
+    </table>
+
+    <h3>2.7 Universal Gates</h3>
+    <p>NAND and NOR are called universal gates because
+    any Boolean function can be implemented using only NAND gates
+    or only NOR gates.</p>
+    `;
+
+    ch2.code = `
+    <h2>Important Boolean Algebra Rules</h2>
+
+    <h3>Basic Laws</h3>
+    <pre>
+A + 0 = A
+A · 1 = A
+
+A + 1 = 1
+A · 0 = 0
+
+A + A = A
+A · A = A
+
+A + A' = 1
+A · A' = 0
+
+(A')' = A
+    </pre>
+
+    <h3>Commutative Laws</h3>
+    <pre>
+A + B = B + A
+A · B = B · A
+    </pre>
+
+    <h3>Associative Laws</h3>
+    <pre>
+A + (B + C) = (A + B) + C
+A · (B · C) = (A · B) · C
+    </pre>
+
+    <h3>Distributive Laws</h3>
+    <pre>
+A(B + C) = AB + AC
+
+A + BC = (A + B)(A + C)
+    </pre>
+
+    <h3>De Morgan's Theorems</h3>
+    <pre>
+(AB)' = A' + B'
+
+(A + B)' = A'B'
+    </pre>
+
+    <h3>Absorption Laws</h3>
+    <pre>
+A + AB = A
+
+A(A + B) = A
+
+A + A'B = A + B
+    </pre>
+    `;
+
+    ch2.quiz = [
+        {
+            question: "Which gate produces 1 only when both inputs are 1?",
+            options: ["OR", "AND", "NOT", "XOR"],
+            answer: 1,
+            explanation: "AND produces 1 only when all inputs are 1."
+        },
+        {
+            question: "What is the output of NOT gate when A = 1?",
+            options: ["0", "1", "A", "Undefined"],
+            answer: 0,
+            explanation: "NOT reverses the input."
+        },
+        {
+            question: "Which gate produces 1 when inputs are different?",
+            options: ["AND", "OR", "XOR", "XNOR"],
+            answer: 2,
+            explanation: "XOR outputs 1 for different inputs."
+        },
+        {
+            question: "What is A + 0?",
+            options: ["0", "1", "A", "A'"],
+            answer: 2,
+            explanation: "This is the identity law."
+        },
+        {
+            question: "What is A · 1?",
+            options: ["0", "1", "A", "A'"],
+            answer: 2,
+            explanation: "A multiplied by 1 equals A."
+        },
+        {
+            question: "What is A + A'?",
+            options: ["0", "1", "A", "A'"],
+            answer: 1,
+            explanation: "A variable OR its complement equals 1."
+        },
+        {
+            question: "What is A · A'?",
+            options: ["0", "1", "A", "A'"],
+            answer: 0,
+            explanation: "A variable AND its complement equals 0."
+        },
+        {
+            question: "Which gates are universal?",
+            options: ["AND and OR", "XOR and XNOR", "NAND and NOR", "NOT and XOR"],
+            answer: 2,
+            explanation: "NAND and NOR can implement any Boolean function."
+        },
+        {
+            question: "What is (A · B)' according to De Morgan's theorem?",
+            options: ["A' · B'", "A' + B'", "A + B", "AB"],
+            answer: 1,
+            explanation: "The complement of AND becomes OR of complements."
+        },
+        {
+            question: "What is (A + B)' according to De Morgan's theorem?",
+            options: ["A' + B'", "A' · B'", "A · B", "A + B"],
+            answer: 1,
+            explanation: "The complement of OR becomes AND of complements."
+        },
+        {
+            question: "What is A + A?",
+            options: ["0", "1", "A", "A'"],
+            answer: 2,
+            explanation: "Idempotent law."
+        },
+        {
+            question: "What is A · A?",
+            options: ["0", "1", "A", "A'"],
+            answer: 2,
+            explanation: "Idempotent law."
+        }
+    ];
+
+    ch2.flashcards = [
+        {
+            question: "What is Boolean Algebra?",
+            answer: "A mathematical system used to describe digital logic."
+        },
+        {
+            question: "What does AND do?",
+            answer: "Outputs 1 only if all inputs are 1."
+        },
+        {
+            question: "What does OR do?",
+            answer: "Outputs 1 if at least one input is 1."
+        },
+        {
+            question: "What does NOT do?",
+            answer: "Inverts the input."
+        },
+        {
+            question: "What does XOR do?",
+            answer: "Outputs 1 when inputs are different."
+        },
+        {
+            question: "What does XNOR do?",
+            answer: "Outputs 1 when inputs are equal."
+        },
+        {
+            question: "What are universal gates?",
+            answer: "NAND and NOR."
+        },
+        {
+            question: "State the first De Morgan theorem.",
+            answer: "(AB)' = A' + B'."
+        },
+        {
+            question: "State the second De Morgan theorem.",
+            answer: "(A+B)' = A'B'."
+        },
+        {
+            question: "What is the identity law for OR?",
+            answer: "A + 0 = A."
+        },
+        {
+            question: "What is the complement law?",
+            answer: "A + A' = 1 and AA' = 0."
+        }
+    ];
+
+    // Keep existing doctor quizzes.
+    ch2.doctorQuizzes = ch2.doctorQuizzes || [];
+
+
+    // ==================================================
+    // CHAPTER 3
+    // Gate-Level Minimization
+    // ==================================================
+
+    const ch3 = subject.lectures[2];
+
+    ch3.summary = `
+    <h2>Chapter 3: Gate-Level Minimization</h2>
+
+    <h3>3.1 Introduction</h3>
+    <p>Gate-level minimization is the process of simplifying
+    Boolean expressions to reduce the number of gates and inputs
+    required to implement a logic circuit.</p>
+
+    <p><b>Advantages:</b></p>
+    <ul>
+        <li>Reduces circuit complexity.</li>
+        <li>Reduces hardware cost.</li>
+        <li>Can reduce power consumption.</li>
+        <li>Can improve circuit performance.</li>
+    </ul>
+
+    <h3>3.2 The Map Method</h3>
+    <p>The Karnaugh Map (K-map) is a graphical method used
+    to simplify Boolean expressions.</p>
+
+    <ul>
+        <li>2 variables: 4 cells.</li>
+        <li>3 variables: 8 cells.</li>
+        <li>4 variables: 16 cells.</li>
+    </ul>
+
+    <h3>3.3 Gray Code</h3>
+    <p>K-map cells are arranged using Gray Code.
+    Adjacent cells differ in only one variable.</p>
+
+    <pre>
+00
+01
+11
+10
+    </pre>
+
+    <h3>3.4 Grouping Rules</h3>
+    <ul>
+        <li>Groups must contain 1, 2, 4, 8, or 16 cells.</li>
+        <li>Groups must be rectangular.</li>
+        <li>Groups should be as large as possible.</li>
+        <li>Groups may overlap.</li>
+        <li>Edges of the map are adjacent.</li>
+        <li>Every required 1 must be covered in SOP simplification.</li>
+    </ul>
+
+    <h3>3.5 Product of Sums (POS)</h3>
+    <p>POS is a product of sum terms.</p>
+    <pre>
+F = (A + B)(A' + C)
+    </pre>
+
+    <p>For POS simplification, group the 0s in the K-map.</p>
+
+    <h3>3.6 Don't-Care Conditions</h3>
+    <p>Don't-care conditions are input combinations whose output
+    can be treated as either 0 or 1.</p>
+
+    <ul>
+        <li>Represented by X or d.</li>
+        <li>Can be used when they help make larger groups.</li>
+        <li>Can be ignored if they do not help simplification.</li>
+    </ul>
+
+    <h3>3.7 NAND and NOR Implementation</h3>
+    <ul>
+        <li>SOP expressions are naturally implemented using NAND-NAND circuits.</li>
+        <li>POS expressions are naturally implemented using NOR-NOR circuits.</li>
+        <li>NAND and NOR are universal gates.</li>
+    </ul>
+
+    <h3>3.8 Two-Level Implementation</h3>
+    <p>Two-level circuits use two logic levels between inputs and output.</p>
+
+    <ul>
+        <li>AND-OR</li>
+        <li>OR-AND</li>
+        <li>NAND-NAND</li>
+        <li>NOR-NOR</li>
+    </ul>
+    `;
+
+    ch3.code = `
+    <h2>Important K-map Rules</h2>
+
+    <h3>Number of Cells</h3>
+    <pre>
+2 variables = 2² = 4 cells
+3 variables = 2³ = 8 cells
+4 variables = 2⁴ = 16 cells
+    </pre>
+
+    <h3>Valid Group Sizes</h3>
+    <pre>
+1, 2, 4, 8, 16
+    </pre>
+
+    <h3>Gray Code Order</h3>
+    <pre>
+00
+01
+11
+10
+    </pre>
+
+    <h3>SOP Simplification</h3>
+    <pre>
+Group the 1s.
+
+Result = Sum of Products
+Example: AB + A'C
+    </pre>
+
+    <h3>POS Simplification</h3>
+    <pre>
+Group the 0s.
+
+Result = Product of Sums
+Example: (A+B)(A'+C)
+    </pre>
+
+    <h3>Don't-Care Conditions</h3>
+    <pre>
+Represented by X or d.
+
+Use them only when they help
+create larger groups.
+    </pre>
+
+    <h3>Gate Implementation</h3>
+    <pre>
+SOP → NAND-NAND
+
+POS → NOR-NOR
+    </pre>
+    `;
+
+    ch3.quiz = [
+        {
+            question: "What is the main purpose of gate-level minimization?",
+            options: [
+                "Increase the number of gates",
+                "Simplify logic circuits",
+                "Increase input variables",
+                "Remove all inputs"
+            ],
+            answer: 1,
+            explanation: "Minimization reduces circuit complexity."
+        },
+        {
+            question: "How many cells are in a 2-variable K-map?",
+            options: ["2", "4", "8", "16"],
+            answer: 1,
+            explanation: "2² = 4 cells."
+        },
+        {
+            question: "How many cells are in a 3-variable K-map?",
+            options: ["4", "8", "16", "32"],
+            answer: 1,
+            explanation: "2³ = 8 cells."
+        },
+        {
+            question: "How many cells are in a 4-variable K-map?",
+            options: ["4", "8", "16", "32"],
+            answer: 2,
+            explanation: "2⁴ = 16 cells."
+        },
+        {
+            question: "Which code is used to arrange K-map cells?",
+            options: ["Binary code", "Gray code", "ASCII", "BCD"],
+            answer: 1,
+            explanation: "K-map uses Gray code ordering."
+        },
+        {
+            question: "How many bits change between adjacent Gray code values?",
+            options: ["One", "Two", "Three", "All bits"],
+            answer: 0,
+            explanation: "Adjacent Gray code values differ by one bit."
+        },
+        {
+            question: "Which of the following is a valid K-map group size?",
+            options: ["3", "5", "6", "4"],
+            answer: 3,
+            explanation: "Valid group sizes are powers of two."
+        },
+        {
+            question: "In SOP simplification, which cells are grouped?",
+            options: ["Zeros", "Ones", "Only X values", "All cells"],
+            answer: 1,
+            explanation: "SOP simplification groups the 1s."
+        },
+        {
+            question: "In POS simplification, which cells are grouped?",
+            options: ["Zeros", "Ones", "Only 1s", "No cells"],
+            answer: 0,
+            explanation: "POS simplification groups the 0s."
+        },
+        {
+            question: "What does a don't-care condition represent?",
+            options: [
+                "A required output of 1",
+                "A required output of 0",
+                "An output that can be 0 or 1",
+                "An invalid variable"
+            ],
+            answer: 2,
+            explanation: "Don't-care values can be chosen to help simplification."
+        },
+        {
+            question: "Which gates are commonly used for SOP NAND implementation?",
+            options: ["AND-OR", "NAND-NAND", "NOR-NOR", "OR-AND"],
+            answer: 1,
+            explanation: "SOP can be implemented using NAND-NAND."
+        },
+        {
+            question: "Which gates are commonly used for POS NOR implementation?",
+            options: ["NAND-NAND", "AND-OR", "NOR-NOR", "OR-OR"],
+            answer: 2,
+            explanation: "POS can be implemented using NOR-NOR."
+        },
+        {
+            question: "Can K-map groups overlap?",
+            options: ["Yes", "No", "Only in 2-variable maps", "Only in POS"],
+            answer: 0,
+            explanation: "Overlapping is allowed when it helps simplify the expression."
+        },
+        {
+            question: "What is the largest possible group in a 4-variable K-map?",
+            options: ["4", "8", "12", "16"],
+            answer: 3,
+            explanation: "A 4-variable K-map contains 16 cells."
+        },
+        {
+            question: "What does SOP stand for?",
+            options: [
+                "Sum of Products",
+                "System of Programs",
+                "Sum of Powers",
+                "Sequence of Products"
+            ],
+            answer: 0,
+            explanation: "SOP means Sum of Products."
+        }
+    ];
+
+    ch3.flashcards = [
+        {
+            question: "What is gate-level minimization?",
+            answer: "Simplifying Boolean expressions to reduce circuit complexity."
+        },
+        {
+            question: "What is a K-map?",
+            answer: "A graphical method for simplifying Boolean expressions."
+        },
+        {
+            question: "How many cells are in a 2-variable K-map?",
+            answer: "4 cells."
+        },
+        {
+            question: "How many cells are in a 3-variable K-map?",
+            answer: "8 cells."
+        },
+        {
+            question: "How many cells are in a 4-variable K-map?",
+            answer: "16 cells."
+        },
+        {
+            question: "What is Gray Code?",
+            answer: "A code in which adjacent values differ by one bit."
+        },
+        {
+            question: "What are valid K-map group sizes?",
+            answer: "1, 2, 4, 8, and 16."
+        },
+        {
+            question: "What do we group in SOP?",
+            answer: "The 1s."
+        },
+        {
+            question: "What do we group in POS?",
+            answer: "The 0s."
+        },
+        {
+            question: "What are don't-care conditions?",
+            answer: "Input combinations whose output can be treated as 0 or 1."
+        },
+        {
+            question: "Can K-map groups overlap?",
+            answer: "Yes, overlapping is allowed."
+        },
+        {
+            question: "Which implementation is used for SOP?",
+            answer: "NAND-NAND."
+        },
+        {
+            question: "Which implementation is used for POS?",
+            answer: "NOR-NOR."
+        },
+        {
+            question: "What does SOP mean?",
+            answer: "Sum of Products."
+        },
+        {
+            question: "What does POS mean?",
+            answer: "Product of Sums."
+        }
+    ];
+
+    // Preserve existing doctor quizzes.
+    ch3.doctorQuizzes = ch3.doctorQuizzes || [];
+
+
+    // ==================================================
+    // FINISHED
+    // ==================================================
+
+    console.log("Digital Logic Design Chapters 1, 2 and 3 loaded successfully!");
+
+})();
+
+// CURRENT SELECTION
+
+
+let currentSubject = 0;
+let currentLecture = 0;
+let lecture = null;
+
+let currentFlashcards = [];
+let flashcardIndex = 0;
+let showingAnswer = false;
+
+
+// =====================================
+// RENDER SUBJECTS
+// =====================================
+
+function renderSubjects() {
+
+    const grid = document.getElementById("subjectsGrid");
+
+    grid.innerHTML = "";
+
+    SUBJECTS.forEach((subject, index) => {
+
+        const card = document.createElement("div");
+
+        card.className = "subject-card";
+
+        card.innerHTML = `
+            <div class="subject-icon">${subject.icon}</div>
+            <h3>${subject.name}</h3>
+            <p>${subject.description}</p>
+            <p style="margin-top:12px;">
+                ${subject.lectures.length} Lectures
+            </p>
+        `;
+
+        card.onclick = () => openSubject(index);
+
+        grid.appendChild(card);
+
+    });
+
+}
+
+
+// =====================================
+// OPEN SUBJECT
+// =====================================
+
+function openSubject(index) {
+
+    currentSubject = index;
+
+    const subject = SUBJECTS[index];
+
+    document.getElementById("homePage").classList.add("hidden");
+
+    document.getElementById("subjectPage").classList.remove("hidden");
+
+    document.getElementById("subjectTitle").textContent =
+        subject.icon + " " + subject.name;
+
+    document.getElementById("subjectDescription").textContent =
+        subject.description;
+
+    document.getElementById("lectureDetails").classList.add("hidden");
+
+    renderLectures();
+
+}
+
+
+// =====================================
+// BACK HOME
+// =====================================
+
+function goHome() {
+
+    document.getElementById("subjectPage").classList.add("hidden");
+
+    document.getElementById("homePage").classList.remove("hidden");
+
+    document.getElementById("lectureDetails").classList.add("hidden");
+
+    lecture = null;
+
+}
+
+
+// =====================================
+// RENDER LECTURES
+// =====================================
+
+function renderLectures() {
+
+    const list = document.getElementById("lectureList");
+
+    list.innerHTML = "";
+
+    const subject = SUBJECTS[currentSubject];
+
+    subject.lectures.forEach((item, index) => {
+
+        const card = document.createElement("div");
+
+        card.className = "lecture-card";
+
+        card.innerHTML = `
+            <h3>${item.title}</h3>
+            <p>${item.subtitle}</p>
+
+            <button class="action-btn" onclick="openLecture(${index})">
+                Open Lecture →
+            </button>
+
+            <br>
+
+            <a class="pdf-btn"
+            href="${encodeURI(item.pdf)}"
+            target="_blank">
+            📄 Open File
+            </a>
+        `;
+
+        list.appendChild(card);
+
+    });
+
+}
+
+
+// =====================================
+// OPEN LECTURE
+// =====================================
+
+function openLecture(index) {
+
+    currentLecture = index;
+
+    lecture = SUBJECTS[currentSubject].lectures[index];
+
+    document.getElementById("lectureDetails").classList.remove("hidden");
+
+    document.getElementById("lectureTitle").textContent =
+        lecture.title;
+
+    document.getElementById("lectureSubtitle").textContent =
+        lecture.subtitle;
+
+    document.getElementById("lecturePDF").href =
+        encodeURI(lecture.pdf);
+
+    const firstTab = document.querySelector(".tab-btn");
+
+    showTab("summary", firstTab);
+
+    document.getElementById("lectureDetails").scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+
+// =====================================
+// SHOW TABS
+// =====================================
+
+function showTab(type, button) {
+
+    document.querySelectorAll(".tab-btn").forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+    if (button) {
+        button.classList.add("active");
+    } else {
+
+        const buttons = document.querySelectorAll(".tab-btn");
+
+        const tabNames = [
+            "summary",
+            "code",
+            "quiz",
+            "flashcards",
+            "doctor"
+        ];
+
+        const index = tabNames.indexOf(type);
+
+        if (index >= 0 && buttons[index]) {
+            buttons[index].classList.add("active");
+        }
+    }
+
+    const panel = document.getElementById("panel");
+
+    if (!lecture) {
+        panel.innerHTML = "Please select a lecture first.";
+        return;
+    }
+
+    if (type === "summary") {
+
+        panel.innerHTML = lecture.summary ||
+            `<div class="empty-state">
+                <h3>No Summary Yet</h3>
+                <p>Add your lecture summary here.</p>
+            </div>`;
+
+    }
+
+    else if (type === "code") {
+
+        renderCode(lecture);
+
+    }
+
+    else if (type === "quiz") {
+
+        renderQuiz(lecture);
+
+    }
+
+    else if (type === "flashcards") {
+
+        renderFlashcards(lecture);
+
+    }
+
+    else if (type === "doctor") {
+
+        const subject = SUBJECTS.find(
+            s => s.name.trim() === "Digital Logic Design"
+        );
+
+        renderDoctorQuizzes(subject || lecture);
+
+    }
+
+}
+// =====================================
+// IMPORTANT CODE
+// =====================================
+
+function renderCode(item) {
+
+    const panel = document.getElementById("panel");
+
+    if (!item.code) {
+
+        panel.innerHTML = `
+            <div class="empty-state">
+                <h3>💻 Important Code</h3>
+                <p>No code examples added yet.</p>
+            </div>
+        `;
+
+        return;
+    }
+
+    panel.innerHTML = `
+        <div class="content-section code-content">
+            ${item.code}
+        </div>
+    `;
+
+    panel.querySelectorAll("pre").forEach(pre => {
+
+        const code = pre.querySelector("code");
+
+        if (!code) return;
+
+        const box = document.createElement("div");
+
+        box.className = "code-box";
+
+        pre.parentNode.insertBefore(box, pre);
+
+        box.appendChild(pre);
+
+        const copyBtn = document.createElement("button");
+
+        copyBtn.className = "copy-btn";
+
+        copyBtn.textContent = "Copy";
+
+        copyBtn.onclick = async () => {
+
+            try {
+
+                await navigator.clipboard.writeText(code.textContent);
+
+                copyBtn.textContent = "Copied!";
+
+                setTimeout(() => {
+                    copyBtn.textContent = "Copy";
+                }, 1500);
+
+            } catch (error) {
+
+                copyBtn.textContent = "Copy failed";
+
+            }
+
+        };
+
+        box.appendChild(copyBtn);
+
+        if (window.Prism) {
+            Prism.highlightElement(code);
+        }
+
+    });
+
+}
+
+
+// =====================================
+// PRACTICE QUIZ
+// =====================================
+
+function renderQuiz(item) {
+
+    const panel = document.getElementById("panel");
+    const questions = item.quiz || [];
+
+    if (!questions.length) {
+        panel.innerHTML = `
+            <div class="empty-state">
+                <h3>🧠 Practice Quiz</h3>
+                <p>No practice questions added yet.</p>
+            </div>
+        `;
+        return;
+    }
+
+    panel.innerHTML = `
+        <div id="quizContainer"></div>
+        <div id="quizResult"></div>
+    `;
+
+    const container = document.getElementById("quizContainer");
+
+    let score = 0;
+    let answered = 0;
+
+    questions.forEach((question, index) => {
+
+        const div = document.createElement("div");
+        div.className = "quiz-question";
+
+        let optionsHTML = "";
+
+        question.options.forEach((option, optionIndex) => {
+
+            optionsHTML += `
+                <label class="option" id="option-${index}-${optionIndex}">
+                    <input
+                        type="radio"
+                        name="question${index}"
+                        value="${optionIndex}">
+                    ${option}
+                </label>
+            `;
+        });
+
+        div.innerHTML = `
+            <h3>${index + 1}. ${question.question}</h3>
+            ${optionsHTML}
+            <div id="feedback-${index}" style="display:none;"></div>
+        `;
+
+        container.appendChild(div);
+
+        const inputs = div.querySelectorAll('input[type="radio"]');
+
+        inputs.forEach(input => {
+
+            input.addEventListener("change", function() {
+
+                const selectedAnswer = Number(this.value);
+                const correctAnswer = Number(question.answer);
+
+                const feedback = div.querySelector(`#feedback-${index}`);
+
+                // قفل اختيارات السؤال الحالي فقط
+                inputs.forEach(radio => {
+                    radio.disabled = true;
+                });
+
+                // تلوين الإجابة الصحيحة
+                const correctLabel = div.querySelector(
+                    `#option-${index}-${correctAnswer}`
+                );
+
+                if (correctLabel) {
+                    correctLabel.style.background = "#d1fae5";
+                    correctLabel.style.border = "2px solid #16a34a";
+                }
+
+                const isCorrect = selectedAnswer === correctAnswer;
+
+                // تلوين الإجابة المختارة لو غلط
+                if (!isCorrect) {
+
+                    const selectedLabel = div.querySelector(
+                        `#option-${index}-${selectedAnswer}`
+                    );
+
+                    if (selectedLabel) {
+                        selectedLabel.style.background = "#fee2e2";
+                        selectedLabel.style.border = "2px solid #dc2626";
+                    }
+
+                } else {
+                    score++;
+                }
+
+                answered++;
+
+                // عرض التصحيح تحت السؤال
+                // عرض التصحيح تحت السؤال
+feedback.style.display = "block";
+feedback.style.marginTop = "15px";
+feedback.style.padding = "15px";
+feedback.style.borderRadius = "10px";
+
+feedback.style.background = isCorrect ? "#d1fae5" : "#fee2e2";
+feedback.style.border = isCorrect
+    ? "2px solid #16a34a"
+    : "2px solid #dc2626";
+
+feedback.innerHTML = `
+    <h3 style="color:${isCorrect ? '#15803d' : '#dc2626'};">
+        ${isCorrect ? "✅ Correct Answer!" : "❌ Incorrect Answer"}
+    </h3>
+
+    <h4 style="margin-top:12px;">💡 Explanation:</h4>
+
+    <p style="line-height:1.8;">
+        ${question.explanation || "No explanation available for this question."}
+    </p>
+`;
+
+                if (question.explanation) {
+                    feedback.innerHTML += `
+                        <p style="margin-top:10px;">
+                            💡 ${question.explanation}
+                        </p>
+                    `;
+                }
+
+                // تحديث النتيجة
+                document.getElementById("quizResult").innerHTML = `
+                    <div class="quiz-result">
+                        <h3>Progress: ${answered} / ${questions.length}</h3>
+                        <h3>Score: ${score} / ${answered}</h3>
+                    </div>
+                `;
+
+            });
+
+        });
+
+    });
+
+}
+// =====================================
+// FLASHCARDS
+// =====================================
+
+function renderFlashcards(item) {
+
+    const panel = document.getElementById("panel");
+
+    currentFlashcards = item.flashcards || [];
+
+    flashcardIndex = 0;
+
+    showingAnswer = false;
+
+    if (currentFlashcards.length === 0) {
+
+        panel.innerHTML = `
+            <div class="empty-state">
+                <h3>🃏 Quick Review</h3>
+                <p>No flashcards added yet.</p>
+            </div>
+        `;
+
+        return;
+    }
+
+    panel.innerHTML = `
+        <div class="flashcard" id="flashcard" onclick="flipFlashcard()">
+            <h3 id="flashcardText"></h3>
+        </div>
+
+        <div class="flashcard-controls">
+
+            <button onclick="previousFlashcard()">
+                ← Previous
+            </button>
+
+            <span id="flashcardCount"></span>
+
+            <button onclick="nextFlashcard()">
+                Next →
+            </button>
+
+        </div>
+
+        <p style="text-align:center; margin-top:15px; color:#827991;">
+            Click the card to reveal the answer.
+        </p>
+    `;
+
+    updateFlashcard();
+
+}
+
+
+function updateFlashcard() {
+
+    const card = currentFlashcards[flashcardIndex];
+
+    if (!card) return;
+
+    document.getElementById("flashcardText").textContent =
+        showingAnswer ? card.answer : card.question;
+
+    document.getElementById("flashcardCount").textContent =
+        `${flashcardIndex + 1} / ${currentFlashcards.length}`;
+
+}
+
+
+function flipFlashcard() {
+
+    showingAnswer = !showingAnswer;
+
+    updateFlashcard();
+
+}
+
+
+function nextFlashcard() {
+
+    if (flashcardIndex < currentFlashcards.length - 1) {
+
+        flashcardIndex++;
+
+        showingAnswer = false;
+
+        updateFlashcard();
+
+    }
+
+}
+
+
+function previousFlashcard() {
+
+    if (flashcardIndex > 0) {
+
+        flashcardIndex--;
+
+        showingAnswer = false;
+
+        updateFlashcard();
+
+    }
+
+}
+
+
+// =====================================
+// DOCTOR'S QUIZZES
+// =====================================
+
+function renderDoctorQuizzes(item) {
+
+    const panel = document.getElementById("panel");
+
+    const quizzes = item.doctorQuizzes || [];
+
+    if (quizzes.length === 0) {
+
+        panel.innerHTML = `
+            <div class="empty-state">
+                <h3>👩‍🏫 Doctor's Quizzes</h3>
+                <p>No doctor's quizzes added yet.</p>
+            </div>
+        `;
+
+        return;
+    }
+
+    panel.innerHTML = `
+        <h2 style="margin-bottom:20px; color:var(--purple);">
+            👩‍🏫 Doctor's Quizzes
+        </h2>
+
+        <div id="doctorQuizList"></div>
+    `;
+
+    const list = document.getElementById("doctorQuizList");
+
+    quizzes.forEach((quiz, index) => {
+
+        const card = document.createElement("div");
+
+        card.className = "doctor-quiz-card";
+
+        card.innerHTML = `
+            <h3>${quiz.title || `Doctor Quiz ${index + 1}`}</h3>
+            <p>${quiz.doctor || "Doctor's Quiz"}</p>
+            <p>📝 ${quiz.questions.length} Questions</p>
+        `;
+
+        const button = document.createElement("button");
+
+        button.className = "action-btn";
+
+        button.textContent = "Start Quiz →";
+
+        button.onclick = () => {
+            renderQuiz({
+                quiz: quiz.questions
+            });
+        };
+
+        card.appendChild(button);
+
+        list.appendChild(card);
+
+    });
+}
+// =====================================
+// START WEBSITE
+// =====================================
+
+renderSubjects();
+
+
+</script>
+
+</body>
+</html>
